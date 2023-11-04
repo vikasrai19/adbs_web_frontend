@@ -3,8 +3,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @layer components {
-    .primary {
-      @apply bg-gradient-to-r from-blue-400 via-blue-400 to-blue-400;
-    }
+  .primary {
+    @apply bg-gradient-to-r from-blue-400 via-blue-400 to-blue-400;
   }
+}
+
+.animation {
+  animation: popUp 2s;
+  transition: ease-in-out;
+}
+
+@keyframes popUp {
+  0% {
+    transform: translateY(500px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
