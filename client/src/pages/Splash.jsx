@@ -5,8 +5,9 @@ import { faTwitter, faWhatsapp, faYoutube } from '@fortawesome/free-brands-svg-i
 
 
 function Splash() {
+  
   return (
-    <div className='primary h-screen'>
+    <div className='primary min-h-screen'>
       <div className='flex flex-col  h-[95vh] justify-center items-center md:flex-row-reverse md:px-32 lg:px-20'>
         <div className='mt-56 sm:mt-5 md:mt-0'>
           <img src="/images/busimg.png" alt='bus' className='' />
@@ -18,7 +19,6 @@ function Splash() {
           <button className='text-lg font-medium h-[3rem] w-[21rem]  md:w-[20.5rem] md:h-[46px] lg:w-[22.5rem] lg:h-[56px] mt-3 text-tblue bg-btnwhite rounded-[10px]'>Get started</button>
         </div>
         
-
       </div>
       <div className='h-[5vh] text-white text-sm flex justify-center gap-3 md:gap-6 items-center'>
 
