@@ -8,6 +8,7 @@ import Onboarding from './pages/Onboarding'
 
 function App() {
   return (
+    <div className='font-poppy'>
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home/>} />
@@ -17,6 +18,7 @@ function App() {
         <Route path='/Login' element={<Login/>}/> 
       </Routes>
     </BrowserRouter>
+    </div>
   )
 }
 

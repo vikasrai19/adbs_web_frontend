@@ -1,10 +1,15 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter, faWhatsapp, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 
 
 function Splash() {
+  const navigate = useNavigate();
+  const handleClick = ()=>{
+      navigate('/Login')
+  }
   
   return (
     <div className='primary min-h-screen'>
@@ -16,7 +21,7 @@ function Splash() {
           <h1 className='hidden md:block text-[2.8rem] md:text-4xl font-bold lg:text-7xl'>BUS WATCH</h1>
           <h2 className='text-[2rem] flex flex-col uppercase'><span className='text-[1.43rem] font-extrabold'>find your</span><span className='text-[2.8rem] font-extrabold md:text-4xl'>bus here!</span></h2>
           <h3>Lorem, ipsum dolor sit amet consectetur adipisicing elit.<br />Consequatur maiores distinctio.</h3>
-          <button className='text-lg font-medium h-[3rem] w-[21rem]  md:w-[20.5rem] md:h-[46px] lg:w-[22.5rem] lg:h-[56px] mt-3 text-tblue bg-btnwhite rounded-[10px]'>Get started</button>
+          <button className='text-lg font-medium h-[3rem] w-[21rem]  md:w-[20.5rem] md:h-[46px] lg:w-[22.5rem] lg:h-[56px] mt-3 text-tblue bg-btnwhite rounded-[10px]' onClick={handleClick}>Get started</button>
         </div>
         
       </div>

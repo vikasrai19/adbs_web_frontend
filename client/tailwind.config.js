@@ -6,10 +6,14 @@ export default {
   ],
   theme: {
     extend: {
-      colors:{
-        "btnwhite":'#FFFFFF',
-        "tblue":'#0A98E7',
+      colors: {
+        "btnwhite": '#FFFFFF',
+        "tblue": '#0A98E7',
+        "inputbg": '#E6E6E6',
       },
+      fontFamily: {
+        poppy: ['Poppins', 'sans-serif']
+      }
     },
   },
   plugins: [],
