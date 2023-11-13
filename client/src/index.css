@@ -24,3 +24,34 @@
     transform: translateY(0);
   }
 }
+
+
+.mobiledrawin {
+  animation: slide2 2s;
+  transition: ease-in;
+}
+
+@keyframes slide2 {
+  0% {
+    transform: translatex(-500px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.mobiledrawout {
+  animation: slide 2s;
+  transition: ease-in;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-500px);
+  }
+}
