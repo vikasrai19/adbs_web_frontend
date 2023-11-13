@@ -1,11 +1,22 @@
 import React, { useState } from 'react'
 import { faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Dashboard from '../components/Dashboard';
+import Payments from '../components/Payments';
+import Contact from '../components/Contact';
+import Drivers from '../components/Drivers';
+import Buses from '../components/Buses';
+import Students from '../components/Students';
+import Mails from '../components/Mails';
+
 
 function Home() {
-  const [mobiledraw, setMobiledraw] = useState('hidden');
+  const [mobiledraw, setMobiledraw] = useState('hidden');  
+  const [current,setCurrent]=useState(''); 
   return (
-    <div className='min-h-screen flex relativ bg-blue-50'>
+    <div className='min-h-screen flex relative bg-blue-50 text-white'>
+     
+     {/* mobile menu bar ..................................................................................*/}
       {
         mobiledraw == 'show' ?
           <div className={`absolute z-1 flex flex-col w-full bg-white h-screen  ${mobiledraw == "show" ? 'mobiledrawin' : 'mobildrawout'}`}>
@@ -18,8 +29,8 @@ function Home() {
 
                 <div className='w-14 h-14 rounded-xl object-fill overflow-hidden outline outline-slate-50'> <img src="https://www.diethelmtravel.com/wp-content/uploads/2016/04/bill-gates-wealthiest-person.jpg" alt="icon" /></div>
                 <div>
-                  <h1 className='text-black text-2xl font-semibold'>Sharan</h1>
-                  <h1 className='text-black text-md opacity-50 font-semibold'>student</h1>
+                  <h1 className=' text-2xl font-semibold'>Sharan</h1>
+                  <h1 className='text-md opacity-50 font-semibold'>student</h1>
                 </div>
 
               </div>
@@ -36,37 +47,49 @@ function Home() {
 
           </div> : ''
       }
-      <div className='hidden primary h-screen md:w-[25vw] lg:w-[19vw] md:p-5 md:flex flex-col justify-normal gap-10'>
+      <div className='hidden primary h-screen md:w-[25vw] lg:w-[15vw] md:p-5 md:flex flex-col justify-normal gap-10'>
         <div>
 
-          <div className=' py-5'>
+          <div className='py-5'>
             Buswatch
           </div>
           <div className='flex items-center gap-4'>
-            <div className=' md:w-14 md:h-14 rounded-xl object-fill overflow-hidden lg:outline  lg:outline-slate-50'> <img src="https://www.diethelmtravel.com/wp-content/uploads/2016/04/bill-gates-wealthiest-person.jpg" alt="icon" /></div>
+          <img className="w-14 h-14 rounded-full outline" src="https://www.diethelmtravel.com/wp-content/uploads/2016/04/bill-gates-wealthiest-person.jpg" alt="Jese image"/>
             <div>
-              <h1 className='text-black text-md lg:text-2xl font-semibold'>Sharan</h1>
-              <h1 className='text-black text-md opacity-50 font-semibold'>student</h1>
+              <h1 className='text-black text-md lg:text-sm font-semibold'>Sharan</h1>
+              <h1 className='text-black text-md lg:text-xs opacity-50 font-semibold'>Admin</h1>
             </div>
             <img src="/icons/editprofile.png" alt="" />
           </div>
         </div>
-        <div className='flex flex-col gap-3'>
-          <div className='flex items-center gap-5 hover:border-l-8 hover:pl-5 border-blue-800'>
-            <img src="/icons/home.svg" alt="" />
-            <h1>home</h1>
+        <div className='flex flex-col gap-3 text-sm'>
+          <div className='flex items-center gap-5  hover:rounded-e-md hover:bg-blue-300 hover:border-l-8 hover:pl-5 border-blue-800' onClick={()=>setCurrent('Dashboard')}>
+            <img src="/icons/home.svg" alt="" width={20}/>
+            <h1>Dashboard</h1>
           </div>
-          <div className='flex items-center gap-5  hover:border-l-8 hover:pl-5 border-blue-800'>
-            <img src="/icons/payment.svg" alt="" />
-            <h1>home</h1>
+          <div className='flex items-center gap-5  hover:rounded-e-md hover:bg-blue-300 hover:border-l-8 hover:pl-5 border-blue-800'  onClick={()=>setCurrent('Drivers')}>
+            <img src="/icons/payment.svg" alt="" width={20} />
+            <h1>Drivers</h1>
           </div>
-          <div className='flex items-center gap-5  hover:border-l-8 border-blue-800 hover:pl-5 '>
-            <img src="/icons/contact.svg" alt="" />
-            <h1>home</h1>
+          <div className='flex items-center gap-5   hover:rounded-e-md hover:bg-blue-300 hover:border-l-8 hover:pl-5 border-blue-800'  onClick={()=>setCurrent('Students')}>
+            <img src="/icons/payment.svg" alt="" width={20} />
+            <h1>Students</h1>
+          </div>
+          <div className='flex items-center gap-5  hover:rounded-e-md hover:bg-blue-300 hover:border-l-8 hover:pl-5 border-blue-800'  onClick={()=>setCurrent('Buses')}>
+            <img src="/icons/payment.svg" alt="" width={20} />
+            <h1>Buses</h1>
+          </div>
+          <div className='flex items-center gap-5  hover:rounded-e-md hover:bg-blue-300 hover:border-l-8 hover:pl-5 border-blue-800'  onClick={()=>setCurrent('payments')}>
+            <img src="/icons/payment.svg" alt="" width={20} />
+            <h1>payments</h1>
+          </div>
+          <div className='flex items-center gap-5  hover:rounded-e-md hover:bg-blue-300 hover:border-l-8 border-blue-800 hover:pl-5 ' onClick={()=>setCurrent('contact')}>
+            <img src="/icons/contact.svg" alt=""  width={20}/>
+            <h1>contact</h1>
           </div>
         </div>
       </div>
-      <div className='w-full md:w-[75vw] lg:w-[81vw]'>
+      <div className='w-full md:w-[75vw] lg:w-full'>
         <div className='w-full  h-10'>
           <div className='flex justify-between md:justify-end  p-3 md:p-5 space-x-2'>
             <div className='float-left md:hidden'>
@@ -74,27 +97,20 @@ function Home() {
 
             </div>
             <div className='flex gap-2 '>
-              <img src="/icons/emai-1.svg" alt="" />
+              <img src="/icons/emai-1.svg" alt="" onClick={()=>setCurrent('mails')}/>
               <img src="/icons/settings.svg" alt="" />
 
             </div>
           </div>
-          <div className='w-full' id='homeground'>
-            <div className='w-[90vw] md:w-[40vw] h-[8rem] bg-white rounded-xl mx-auto mt-10 flex flex-col justify-center p-4'>
-              <div className='flex  justify-center items-start gap-3' id='notifications' >
-                <img src="https://www.diethelmtravel.com/wp-content/uploads/2016/04/bill-gates-wealthiest-person.jpg" alt="icon" className='w-8 rounded-full my-2' />
-                <div>
-                  <h1 className='font-bold'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. </h1>
-                  <h2 className='break-words text-xs md:text-sm text-black/40'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus neque nam similique provident beatae praesentium ducimus vel earum aut omnis,.........</h2>
-                </div>
-              </div>
-            </div>
-            <div>
-               <h1>My bus</h1>
-               <div>
+          <div  >
 
-               </div>
-            </div>
+            {current=='Dashboard'?<Dashboard/>:''}
+            {current=='Drivers'?<Drivers/>:''}
+            {current=='Buses'?<Buses/>:''}
+            {current=='Students'?<Students/>:''}
+            {current=='payments'?<Payments/>:''}
+            {current=='contact'?<Contact/>:''}
+            {current=='mails'?<Mails/>:''}
           </div>
         </div>
 
