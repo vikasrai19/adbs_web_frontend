@@ -55,3 +55,7 @@
     transform: translateX(-500px);
   }
 }
+
+::-webkit-scrollbar{
+  width: 0;
+}

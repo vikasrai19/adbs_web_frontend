@@ -5,6 +5,9 @@ import Signup from './pages/Signup'
 import Splash from './pages/Splash'
 import Login from './pages/Login'
 import Onboarding from './pages/Onboarding'
+import Driver from './pages/Driver/Drivers'
+import DriverProfile from './pages/Driver/DriverProfile'
+
 
 function App() {
   return (
@@ -16,6 +19,9 @@ function App() {
         <Route path='/signup' element={<Signup/>}/> 
         <Route path='/Splash' element={<Splash/>}/> 
         <Route path='/Login' element={<Login/>}/> 
+        <Route path='/test' element={<Home/>}/> 
+        <Route path='/driver' element={<Driver/>}/> 
+        <Route path='/managedriver' element={<DriverProfile/>}/> 
       </Routes>
     </BrowserRouter>
     </div>
