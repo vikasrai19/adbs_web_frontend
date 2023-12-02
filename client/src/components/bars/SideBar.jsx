@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { faX } from '@fortawesome/free-solid-svg-icons';
+import { faGear, faHouse, faIdCard, faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import{ useNavigate } from 'react-router-dom'
 
@@ -8,7 +8,7 @@ function Sidebar() {
   const [current,setCurrent]=useState(''); 
   const navigate=useNavigate()
   return (
-    <div className='min-h-screen flex relative bg-blue-50 text-white '>
+    <div className='min-h-screen flex relative bg-blue-50 text-white'>
      
      {/* mobile menu bar ..................................................................................*/}
       {
@@ -42,7 +42,7 @@ function Sidebar() {
           </div> : ''
       }
       <div className='hidden primary h-screen md:w-[25vw] lg:w-[15vw] md:p-5 md:flex flex-col justify-normal gap-10'>
-        <div>
+        <div className=''>
 
           <div className='py-5'>
             Buswatch
@@ -57,23 +57,27 @@ function Sidebar() {
           </div>
         </div>
         <div className='flex flex-col gap-3 text-sm'>
-          <div className='flex items-center gap-5  hover:rounded-e-md hover:bg-blue-300 hover:border-l-8 hover:pl-5 border-blue-800' onClick={()=>navigate('/')}>
-            <img src="/icons/home.svg" alt="" width={20}/>
+          <div className='flex items-center gap-5  hover:rounded-e-md hover:bg-blue-300 hover:border-l-8 hover:pl-5 hover:p-2 hover:w-full border-blue-800' onClick={()=>navigate('/home')}>
+          <FontAwesomeIcon icon={faHouse} style={{color: "#000000",}} />
             <h1>Dashboard</h1>
           </div>
-          <div className='flex items-center gap-5  hover:rounded-e-md hover:bg-blue-300 hover:border-l-8 hover:pl-5 border-blue-800'  onClick={()=>navigate('/driver')}>
-            <img src="/icons/payment.svg" alt="" width={20} />
+          <div className='flex items-center gap-5  hover:rounded-e-md hover:bg-blue-300 hover:border-l-8 hover:pl-5 hover:p-2 hover:w-full border-blue-800' onClick={()=>navigate('/config')}>
+          <FontAwesomeIcon icon={faGear} style={{color: "#000000",}} />
+            <h1>Configuration</h1>
+          </div>
+          <div className='flex items-center gap-5  hover:rounded-e-md hover:bg-blue-300 hover:border-l-8 hover:pl-5 hover:p-2 hover:w-full border-blue-800'  onClick={()=>navigate('/driver')}>
+          <FontAwesomeIcon icon={faIdCard} style={{color: "#000000",}} />
             <h1>Drivers</h1>
           </div>
-          <div className='flex items-center gap-5   hover:rounded-e-md hover:bg-blue-300 hover:border-l-8 hover:pl-5 border-blue-800'  onClick={()=>setCurrent('Students')}>
+          <div className='flex items-center gap-5   hover:rounded-e-md hover:bg-blue-300 hover:border-l-8 hover:pl-5 hover:p-2 hover:w-full border-blue-800'  onClick={()=>navigate('/Student')}>
             <img src="/icons/payment.svg" alt="" width={20} />
             <h1>Students</h1>
           </div>
-          <div className='flex items-center gap-5  hover:rounded-e-md hover:bg-blue-300 hover:border-l-8 hover:pl-5 border-blue-800'  onClick={()=>setCurrent('Buses')}>
+          <div className='flex items-center gap-5  hover:rounded-e-md hover:bg-blue-300 hover:border-l-8 hover:pl-5 hover:p-2 hover:w-full border-blue-800'  onClick={()=>navigate('/Buses')}>
             <img src="/icons/payment.svg" alt="" width={20} />
             <h1>Buses</h1>
           </div>
-          <div className='flex items-center gap-5  hover:rounded-e-md hover:bg-blue-300 hover:border-l-8 hover:pl-5 border-blue-800'  onClick={()=>setCurrent('payments')}>
+          <div className='flex items-center gap-5  hover:rounded-e-md hover:bg-blue-300 hover:border-l-8 hover:pl-5 hover:p-2 hover:w-full border-blue-800'  onClick={()=>setCurrent('payments')}>
             <img src="/icons/payment.svg" alt="" width={20} />
             <h1>payments</h1>
           </div>
