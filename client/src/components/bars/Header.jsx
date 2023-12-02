@@ -7,7 +7,7 @@ function Header() {
         <div className=''>
           <div className='flex justify-between md:justify-end  p-3 md:p-5 space-x-2'>
             <div className='float-left md:hidden'>
-              <img src="/icons/menu.svg" alt="" onClick={() => { setMobiledraw('show') }} />
+              <img src="/icons/menu.svg" alt="" onClick={() => { setMobiledraw('show') }} />  
 
             </div>
             <div className='flex gap-2 '>

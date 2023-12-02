@@ -8,7 +8,7 @@ function Home() {
   return (
     <div className='flex bg-secondary'>
       <Sidebar/>
-      <div>
+      <div className=''>
         <Header/>
        <Dashboard/>
       </div>
