@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { faGear, faHouse, faIdCard, faX } from '@fortawesome/free-solid-svg-icons';
+import { faBus, faCommentsDollar, faGear, faHouse, faIdCard, faPhone, faUsers, faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import{ useNavigate } from 'react-router-dom'
 
@@ -70,19 +70,19 @@ function Sidebar() {
             <h1>Drivers</h1>
           </div>
           <div className='flex items-center gap-5   hover:rounded-e-md hover:bg-blue-300 hover:border-l-8 hover:pl-5 hover:p-2 hover:w-full border-blue-800'  onClick={()=>navigate('/Student')}>
-            <img src="/icons/payment.svg" alt="" width={20} />
+          <FontAwesomeIcon icon={faUsers}  style={{color: "#000000",}} />
             <h1>Students</h1>
           </div>
           <div className='flex items-center gap-5  hover:rounded-e-md hover:bg-blue-300 hover:border-l-8 hover:pl-5 hover:p-2 hover:w-full border-blue-800'  onClick={()=>navigate('/Buses')}>
-            <img src="/icons/payment.svg" alt="" width={20} />
+          <FontAwesomeIcon icon={faBus} style={{color: "#000000",}}  />
             <h1>Buses</h1>
           </div>
           <div className='flex items-center gap-5  hover:rounded-e-md hover:bg-blue-300 hover:border-l-8 hover:pl-5 hover:p-2 hover:w-full border-blue-800'  onClick={()=>setCurrent('payments')}>
-            <img src="/icons/payment.svg" alt="" width={20} />
+          <FontAwesomeIcon icon={faCommentsDollar} style={{color: "#000000",}} />
             <h1>payments</h1>
           </div>
           <div className='flex items-center gap-5  hover:rounded-e-md hover:bg-blue-300 hover:border-l-8 border-blue-800 hover:pl-5 ' onClick={()=>setCurrent('contact')}>
-            <img src="/icons/contact.svg" alt=""  width={20}/>
+          <FontAwesomeIcon icon={faPhone} style={{color: "#000000",}}/>
             <h1>contact</h1>
           </div>
         </div>

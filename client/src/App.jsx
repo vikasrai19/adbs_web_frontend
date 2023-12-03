@@ -12,6 +12,8 @@ import StudentProfile from './pages/Student/StudentProfile'
 import Bus from './pages/Buses/Bus'
 import Header from './components/bars/Header'
 import ConfigPage from './pages/Configuration/ConfigPage'
+import AddBusPage from './pages/Buses/AddBusPage'
+import AddStudentsPage from './pages/Student/AddStudentsPage'
 
 
 
@@ -30,8 +32,10 @@ function App() {
         <Route path='/driver' element={<Driver/>}/> 
         <Route path='/managedriver' element={<DriverProfile/>}/> 
         <Route path='/Student' element={<Students/>}/> 
+        <Route path='/addStudents' element={<AddStudentsPage/>}/> 
         <Route path='/manageStudent' element={<StudentProfile/>}/> 
         <Route path='/Buses' element={<Bus/>}/> 
+        <Route path='/addBus' element={<AddBusPage/>}/> 
         <Route path='/test1' element={<Header/>}/> 
         <Route path='/test1' element={<Header/>}/> 
         <Route path='/Config' element={<ConfigPage/>}/> 

@@ -27,7 +27,7 @@ function Login() {
       localStorage.setItem('name', data?.name)
       localStorage.setItem('mobileNo', data?.mobileNo)
       console.log('login successful')
-      toast('login successful')
+      toast.success('login successful')
       navigate('/Home')
     }catch(er){
       toast(er.response.data)
@@ -47,8 +47,8 @@ function Login() {
 
         </div>
         <form onSubmit={handleLogin} className='flex items-center justify-center flex-col w-full space-y-3'>
-          <input type="text" name='email' className='bg-inputbg w-full h-[57px] md:w-1/4 rounded-[10px] placeholder:text-center px-3' placeholder='username' />
-          <input type="password" name='password' className='bg-inputbg w-full h-[57px] md:w-1/4  rounded-[10px] placeholder:text-center px-3' placeholder='password' />
+          <input type="text" name='email' className='bg-inputbg w-full h-[57px] md:w-1/4 rounded-[10px] placeholder:text-center px-3' placeholder='username' required/>
+          <input type="password" name='password' className='bg-inputbg w-full h-[57px] md:w-1/4  rounded-[10px] placeholder:text-center px-3' placeholder='password' required />
           <input type="submit" value="Login" className='text-btnw hite bg-tblue w-[189px] h-[52px] rounded-[15px] text-btnwhite cursor-pointer' />
         </form>
         <ToastContainer />
