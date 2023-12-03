@@ -1,5 +1,8 @@
 import React from 'react'
 import axios from "axios"
+// Importing toastify module
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Config() {
 
@@ -15,11 +18,11 @@ function Config() {
           userId: localStorage.getItem('userId')
         }
       )
-      console.log('data ', data)
+      toast.success(data.message)
     } catch (error) {
       // show error message
       console.log('error ', error)
-      console.log('error message ', error?.response.data.message)
+      toast(error?.response.data.message)
     }
   }
 
@@ -40,8 +43,8 @@ function Config() {
     )
     console.log('success')
   } catch (error) {
-    console.log('error ', error)
-    console.log('error message ', error?.response.data)
+    console.log(error)
+  
   }
   }
 
@@ -59,9 +62,13 @@ try {
       }
     )
     console.log('success')
+    toast.success("Added sucessfully!", {
+      position: toast.POSITION.TOP_CENTER
+    });
+
 } catch (error) {
   console.log('error ', error)
-  console.log('error message ', error?.response.data)
+  // toast('error message ', error?.response.data)
 }
 }
   return (
@@ -69,8 +76,8 @@ try {
         <form onSubmit={handleCreateAcademicYear} className='mt-1 w-[20vw] bg-white shadow-md h-[50%] flex flex-col items-center'>
          <div className='w-full h-full flex flex-col items-center justify-evenly'>
           <h1>Academic year</h1>
-          <input type="text" name="academicYear" id="" className='w-[90%] h-10 border border-black/50 ' placeholder='Enter Academic Year' />
-          <input type="number" name="orderNo" id="" className='w-[90%] h-10 border border-black/50'  placeholder='Enter Order No'/>
+          <input type="text" name="academicYear" id="" className='w-[90%] h-10 border border-black/50 p-4 ' placeholder='Enter Academic Year' />
+          <input type="number" name="orderNo" id="" className='w-[90%] h-10 border border-black/50 p-4'  placeholder='Enter Order No'/>
           <button type='submit' className='bg-tblue text-btnw hite w-[189px] h-[52px] rounded-[15px] text-btnwhite cursor-pointer'>
            create</button>
           </div>  
@@ -78,8 +85,8 @@ try {
         <form onSubmit={handleCreateDesignation} className='mt-1 w-[20vw] bg-white shadow-md h-[50%] flex flex-col items-center'>
          <div className='w-full h-full flex flex-col items-center justify-evenly'>
           <h1>Designation</h1>
-          <input type="text" name="designation" id="" className='w-[90%] h-10 border border-black/50 '/>
-          <input type="number" name="orderNo" id="" className='w-[90%] h-10 border border-black/50'/>
+          <input type="text" name="designation" id="" className='w-[90%] h-10 border border-black/50 p-4'/>
+          <input type="number" name="orderNo" id="" className='w-[90%] h-10 border border-black/50 p-4'/>
           <button type='submit' className='bg-tblue text-btnw hite w-[189px] h-[52px] rounded-[15px] text-btnwhite cursor-pointer'>
            create</button>
           </div>  
@@ -87,12 +94,13 @@ try {
         <form  onSubmit={handleCreateBoarding} className='mt-1 w-[20vw] bg-white shadow-md h-[50%] flex flex-col items-center'>
          <div className='w-full h-full flex flex-col items-center justify-evenly'>
           <h1>Bus stop</h1>
-          <input type="text" name="BoardingPointName" id="" className='w-[90%] h-10 border border-black/50 '/>
-          <input type="number" name="BoardingPointNo" id="" className='w-[90%] h-10 border border-black/50'/>
+          <input type="text" name="BoardingPointName" id="" className='w-[90%] h-10 border border-black/50 p-4'/>
+          <input type="number" name="BoardingPointNo" id="" className='w-[90%] h-10 border border-black/50 p-4'/>
           <button className='bg-tblue text-btnw hite w-[189px] h-[52px] rounded-[15px] text-btnwhite cursor-pointer'>
            create</button>
           </div>  
         </form>
+        <ToastContainer />
         
     </div>
   )
