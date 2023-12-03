@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 function Splash() {
   const navigate = useNavigate();
   const handleClick = ()=>{
-      navigate('/Login')
+      navigate('/')
   }
   
   return (

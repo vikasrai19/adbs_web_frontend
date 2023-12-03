@@ -10,7 +10,7 @@ function Header() {
               <img src="/icons/menu.svg" alt="" onClick={() => { setMobiledraw('show') }} />  
 
             </div>
-            <div className='flex gap-2 '>
+            <div className='flex gap-2'>
               <img src="/icons/emai-1.svg" alt="" onClick={()=>setCurrent('mails')}/>
               <img src="/icons/settings.svg" alt="" />
 
