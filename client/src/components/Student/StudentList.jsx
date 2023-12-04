@@ -42,13 +42,13 @@ function StudentList() {
                 {studentList?(studentList.map(item=>(
                      
                 <tr className='odd:bg-white even:bg-gray-50  hover:bg-gray-200' onClick={()=>{navigate('/manageStudent')}}><th scope="row" className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                    <img className="w-10 h-10 rounded-full" src={item.stdImage} alt="Jese image" />
+                    <img className="w-10 h-10 rounded-full" src={item.userImage} alt="Jese image" />
                     <div className="ps-3">
                         <div className="text-base font-semibold text-black">{item.name}</div>
                         <div className
                             ="font-normal text-gray-500">{item.email}</div>
                     </div>
-                </th><td className='px-6 py-4'>{item.usn}</td><td className='px-6 py-4'>{item.mobileno}</td><td className='px-6 py-4'>{item.busNo}</td></tr>
+                </th><td className='px-6 py-4'>{item.userId}</td><td className='px-6 py-4'>{item.mobileno}</td><td className='px-6 py-4'>{item.busNo}</td></tr>
                 ))):(
                     <tr>
                     <td>No data found</td>

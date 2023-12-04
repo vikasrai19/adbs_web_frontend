@@ -79,7 +79,7 @@ function AddStudents() {
             accept="image/*"
             onChange={handleImageChange}
             id="imageInput"
-            name='stdImage'
+            name='userImage'
             className="hidden"
           />
         </div>
@@ -88,31 +88,31 @@ function AddStudents() {
           <div className='flex w-full' >
             <div className='flex flex-col w-1/2 justify-center ml-4'>
               <label htmlFor="usn" className='text-black/60'>usn</label>
-              <input type="text" name="usn" id="" className='w-[90%] h-10 border p-4' />
+              <input type="text" name="usn" id="" className='w-[90%] h-10 border p-4' required />
             </div>
             <div className='flex flex-col w-1/2'>
               <label htmlFor="name" className='text-black/60'>name</label>
-              <input type="text" name="name" id="" className='w-[90%]  h-10 border p-4 ' />
+              <input type="text" name="name" id="" className='w-[90%]  h-10 border p-4 ' required />
             </div>
           </div>
           <div className='flex w-full' >
             <div className='flex flex-col w-1/2 justify-center ml-4'>
               <label htmlFor="email" className='text-black/60'>Email</label>
-              <input type="email" name="email" id="" className='w-[90%] h-10 border p-4' />
+              <input type="email" name="email" id="" className='w-[90%] h-10 border p-4' required />
             </div>
             <div className='flex flex-col w-1/2'>
               <label htmlFor="mobileno" className='text-black/60'>mobileno</label>
-              <input type="number" name="mobileno" id="" className='w-[90%]  h-10 border p-4 ' />
+              <input type="number" name="mobileno" id="" className='w-[90%]  h-10 border p-4 ' required />
             </div>
           </div>
           <div className='flex w-full' >
             <div className='flex flex-col w-1/2 justify-center ml-4'>
               <label htmlFor="busNo " className='text-black/60'>busNo</label>
-              <input type="number" name="busNo" id="" className='w-[90%] h-10 border p-4' />
+              <input type="number" name="busNo" id="" className='w-[90%] h-10 border p-4' required />
             </div>
             <div className='flex flex-col w-1/2'>
               <label htmlFor="password" className='text-black/60'>password</label>
-              <input type="password" name="password" id="" className='w-[90%]  h-10 border p-4 ' />
+              <input type="password" name="password" id="" className='w-[90%]  h-10 border p-4 ' required />
             </div>
           </div>
           <button type='submit' className='bg-tblue w-[189px] h-[52px] rounded-[15px] text-btnwhite cursor-pointer mt-4'>Add</button>
