@@ -1,5 +1,9 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+// Importing toastify module
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function AddBus() {
     const [selectedImage, setSelectedImage] = useState(null)
     const handleImageChange = (e) => {
@@ -31,7 +35,9 @@ const handleAddBus= async (e)=>{
           position: toast.POSITION.TOP_CENTER
         });
     } catch (error) {
-        console.log('error ', error)   
+        console.log('error ', error)  
+        console.log(error.response.data.message) 
+        toast.error(error.response.data.message)
     }
 }
     return (
@@ -48,8 +54,8 @@ const handleAddBus= async (e)=>{
                             )
 
                             }
-
-                            <input type="file" name="" id="" className='' onChange={handleImageChange} />
+                             <label htmlFor="busImage" className='font-bold border border-black'>select bus image</label>
+                            <input type="file" name='busImage' id="busImage" className='hidden' onChange={handleImageChange}   />
                         </div>
                     </div>
                     <div className=' p-10'>
@@ -58,12 +64,12 @@ const handleAddBus= async (e)=>{
                             <div className='flex flex-col'>
 
                                 <label htmlFor="busNo">Busnumber</label>
-                                <input type="number" name='busNo' className=' h-10 border border-black/50 p-4 rounded' />
+                                <input type="number" name='busNo' className=' h-10 border border-black/50 p-4 rounded' required />
                             </div>
                             <div className='flex flex-col'>
 
                                 <label htmlFor="routeNo">routeNo</label>
-                                <input type="number" name='routeNo' className=' h-10 border border-black/50 p-4 rounded' />
+                                <input type="number" name='routeNo' className=' h-10 border border-black/50 p-4 rounded' required />
                             </div>
                         </div>
                         <div className='w-full flex items-center justify-between gap-3'>
@@ -71,12 +77,12 @@ const handleAddBus= async (e)=>{
                             <div className='flex flex-col'>
 
                                 <label htmlFor="regDate">regDate</label>
-                                <input type="number" name='regDate' className=' h-10 border border-black/50 p-4 rounded' />
+                                <input type="date" name='regDate' className=' h-10 border border-black/50 p-4 rounded' required />
                             </div>
                             <div className='flex flex-col'>
 
                                 <label htmlFor="purchaseDate">purchaseDate</label>
-                                <input type="date" name='purchaseDate' className=' h-10 border border-black/50 p-4 rounded' />
+                                <input type="date" name='purchaseDate' className=' h-10 border border-black/50 p-4 rounded' required />
                             </div>
                         </div>
                         <div className='w-full flex items-center justify-between gap-3'>
@@ -84,12 +90,12 @@ const handleAddBus= async (e)=>{
                             <div className='flex flex-col'>
 
                                 <label htmlFor="startingPoint">startingPoint</label>
-                                <input type="text" name='startingPoint' className=' h-10 border border-black/50 p-4 rounded' />
+                                <input type="text" name='startingPoint' className=' h-10 border border-black/50 p-4 rounded' required />
                             </div>
                             <div className='flex flex-col'>
 
                                 <label htmlFor="endingPoint">endingPoint</label>
-                                <input type="text" name='endingPoint' className=' h-10 border border-black/50 p-4 rounded' />
+                                <input type="text" name='endingPoint' className=' h-10 border border-black/50 p-4 rounded' required />
                             </div>
                         </div>
                         <div className='w-full flex items-center justify-between gap-3'>
@@ -97,20 +103,21 @@ const handleAddBus= async (e)=>{
                             <div className='flex flex-col'>
 
                                 <label htmlFor="driver">driver</label>
-                                <input type="text" name='driver' className=' h-10 border border-black/50 p-4 rounded' />
+                                <input type="text"  className=' h-10 border border-black/50 p-4 rounded' required />
                             </div>
                             <div className='flex flex-col'>
 
                                 <label htmlFor="noOfSeats">noOfSeats</label>
-                                <input type="number" name='noOfSeats' className=' h-10 border border-black/50 p-4 rounded' />
+                                <input type="number" name='noOfSeats' className=' h-10 border border-black/50 p-4 rounded' required />
                             </div>
                         </div>
                         <div className='w-full flex justify-center'>
-                        <input type="submit" value="update"  className='bg-tblue  w-[189px] h-[52px] rounded-[15px] text-btnwhite cursor-pointer my-2'/>
+                        <input type="submit" value="Add"  className='bg-tblue  w-[189px] h-[52px] rounded-[15px] text-btnwhite cursor-pointer my-2'/>
                         </div>
                     </div>
                 </div>
             </form>
+            <ToastContainer/>
         </div>
     )
 }

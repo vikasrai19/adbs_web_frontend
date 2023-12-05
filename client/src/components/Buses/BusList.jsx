@@ -40,9 +40,9 @@ function BusList() {
                 <button className=' mr-5 bg-slate-200 px-6 py-2 my-2 rounded-md' onClick={()=>{navigate('/addBus')}}><FontAwesomeIcon icon={faPlus} /></button>
                 </div>
             <div className='w-full flex flex-col justify-center items-center'>
+                <div className='grid grid-cols-3 gap-4 place-items-center place-content-center mt-5'>
                 {busList?(busList.map(item=>(
 
-                        <div className='grid grid-cols-3 gap-4 place-items-center place-content-center mt-5'>
                             <div className='w-[20vw] h-[20vw] bg-white flex flex-col justify-center items-center shadow-sm'>
                                 <div className='text-center'>
                                     <div className='mb-5 text-2xl font-semi-bold '>
@@ -63,14 +63,14 @@ function BusList() {
                                 </div>
                             </div>
                             
-                        </div>
-                ))): (
-                    <tr>
+                            ))): (
+                                <tr>
                       <td>No data found</td>
                     </tr>
                   )
-                    
+                  
                 }
+                </div>
                     </div>
                
 

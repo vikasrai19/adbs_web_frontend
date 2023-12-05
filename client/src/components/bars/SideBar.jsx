@@ -7,6 +7,8 @@ function Sidebar() {
   const [mobiledraw, setMobiledraw] = useState('hidden');  
   const [current,setCurrent]=useState(''); 
   const navigate=useNavigate()
+  const username=localStorage.getItem('name')
+ 
   return (
     <div className='min-h-screen flex relative bg-blue-50 text-white'>
      
@@ -23,7 +25,7 @@ function Sidebar() {
 
                 <div className='w-14 h-14 rounded-xl object-fill overflow-hidden outline outline-slate-50'> <img src="https://www.diethelmtravel.com/wp-content/uploads/2016/04/bill-gates-wealthiest-person.jpg" alt="icon" /></div>
                 <div>
-                  <h1 className=' text-2xl font-semibold'>Sharan</h1>
+                  <h1 className=' text-2xl font-semibold'>{username}</h1>
                   <h1 className='text-md opacity-50 font-semibold'>student</h1>
                 </div>
 
@@ -50,7 +52,7 @@ function Sidebar() {
           <div className='flex items-center gap-4'>
           <img className="w-14 h-14 rounded-full outline" src="https://www.diethelmtravel.com/wp-content/uploads/2016/04/bill-gates-wealthiest-person.jpg" alt="Jese image"/>
             <div>
-              <h1 className='text-black text-md lg:text-sm font-semibold'>Sharan</h1>
+              <h1 className='text-black text-md lg:text-sm font-semibold'>{username}</h1>
               <h1 className='text-black text-md lg:text-xs opacity-50 font-semibold'>Admin</h1>
             </div>
             <img src="/icons/editprofile.png" alt="" />
