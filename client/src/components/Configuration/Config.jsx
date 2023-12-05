@@ -131,7 +131,7 @@ function Config() {
     }
   }
   return (
-    <div className=' h-screen  md:w-[75vw] lg:w-[85vw] overflow-y-scroll'>
+    <div className=' h-screen  md:w-[75vw] lg:w-[85vw] overflow-y-scroll overflow-x-hidden'>
       <div className='h-screen flex items-center justify-evenly md:w-[75vw] lg:w-[85vw] m-5'>
         <form onSubmit={handleCreateAcademicYear} className='mt-1 w-[20vw] bg-white shadow-md h-[50%] flex flex-col items-center'>
           <div className='w-full h-full flex flex-col items-center justify-evenly'>
