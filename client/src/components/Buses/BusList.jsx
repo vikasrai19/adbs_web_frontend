@@ -98,7 +98,7 @@ function BusList() {
                                     </div>
                                     <div className='text-center'>
                                         <h1>Seats</h1>
-                                        <h1></h1>
+                                        <h1>{item.noOfSeats}</h1>
                                     </div>
 
                                     <div>
