@@ -70,7 +70,8 @@ function AddDriver() {
         position: toast.POSITION.TOP_CENTER
       });
     } catch (error) {
-      toast.error(error.response.data);
+      console.log(error)
+      toast.error(error.response.data.message);
 
     }
   }

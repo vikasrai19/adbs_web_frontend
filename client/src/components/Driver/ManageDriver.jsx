@@ -1,6 +1,12 @@
 import React, { useState } from 'react'
+import { useLocation } from "react-router-dom"
+
 
 function ManageDriver() {
+  const location = useLocation()
+  const params = new URLSearchParams(location.search)
+   const useriddetails=params.get('user')
+   console.log(useriddetails);
     const [selectedImage, setSelectedImage] = useState(null);
     const handleImageChange = (e) => {
       const file = e.target.files[0];
