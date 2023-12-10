@@ -27,6 +27,7 @@ const handleAddBus= async (e)=>{
         const {data, status} = await axios.post(
           `http://localhost:3000/web/api/addbus`,
           {...body,
+            busImage: body.busImage['name'],
           userId: localStorage.getItem('userId')
           }
         ) 
@@ -36,7 +37,7 @@ const handleAddBus= async (e)=>{
         });
     } catch (error) {
         console.log('error ', error)  
-        console.log(error.response.data.message) 
+        console.log(error.response.data) 
         toast.error(error.response.data.message)
     }
 }
@@ -55,7 +56,7 @@ const handleAddBus= async (e)=>{
 
                             }
                              <label htmlFor="busImage" className='font-bold border border-black'>select bus image</label>
-                            <input type="file" name='busImage' id="busImage" className='hidden' onChange={handleImageChange}   />
+                            <input type="file" name='busImage' id="busImage" className='hidden' onChange={handleImageChange}  required />
                         </div>
                     </div>
                     <div className=' p-10'>
@@ -100,11 +101,7 @@ const handleAddBus= async (e)=>{
                         </div>
                         <div className='w-full flex items-center justify-between gap-3'>
 
-                            <div className='flex flex-col'>
-
-                                <label htmlFor="driver">driver</label>
-                                <input type="text"  className=' h-10 border border-black/50 p-4 rounded' required />
-                            </div>
+                          
                             <div className='flex flex-col'>
 
                                 <label htmlFor="noOfSeats">noOfSeats</label>

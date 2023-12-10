@@ -16,6 +16,7 @@ import AddBusPage from './pages/Buses/AddBusPage'
 import AddStudentsPage from './pages/Student/AddStudentsPage'
 import UpdateBusPage from './pages/Buses/UpdateBusPage'
 import AddDriverPage from './pages/Driver/AddDriverPage'
+import MailPage from './pages/mail/MailPage'
 
 
 
@@ -43,6 +44,7 @@ function App() {
         <Route path='/test1' element={<Header/>}/> 
         <Route path='/test1' element={<Header/>}/> 
         <Route path='/Config' element={<ConfigPage/>}/> 
+        <Route path='/mail' element={<MailPage/>}/> 
   
 
       </Routes>

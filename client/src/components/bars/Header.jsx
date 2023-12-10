@@ -1,7 +1,10 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function Header() {
+  const navigate=useNavigate();
   return (
+   
     
       <div className='absolute right-0'>
         <div className=''>
@@ -11,7 +14,7 @@ function Header() {
 
             </div>
             <div className='flex gap-2'>
-              <img src="/icons/emai-1.svg" alt="" onClick={()=>setCurrent('mails')}/>
+              <img src="/icons/emai-1.svg" alt="" onClick={()=>navigate('/mail')}/>
               <img src="/icons/settings.svg" alt="" />
 
             </div>

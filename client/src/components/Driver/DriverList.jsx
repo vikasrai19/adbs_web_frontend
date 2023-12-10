@@ -7,8 +7,50 @@ import axios from 'axios'
 
 function DriverList() {
   const [deleteItem,setDeleteItem]=useState(false);
+  const [selectedItemIds, setSelectedItemIds] = useState([]);
   const [driverList, setDriverList] = useState()
   const navigate = useNavigate();
+
+  const handleCheckboxChange = (itemId) => {
+    if (deleteItem) {
+        // Toggle the selected item ID
+        setSelectedItemIds((prevSelectedIds) => {
+            if (prevSelectedIds.includes(itemId)) {
+                return prevSelectedIds.filter((id) => id !== itemId);
+
+            } else {
+                return [...prevSelectedIds, itemId];
+            }
+        });
+    }
+};
+console.log(selectedItemIds)
+
+const handleDelete = async (e) => {
+    e.preventDefault();
+    try {
+
+        const body = selectedItemIds;
+        const { data, status } = await axios.post(
+            `http://localhost:3000/web/api/deletebus`,
+            {
+                ...body
+            }
+        )
+        console.log(...body + "hello");
+        toast.success("Deleted sucessfully!", {
+            position: toast.POSITION.TOP_CENTER
+        });
+    } catch (error) {
+        console.log(error.response.data.message)
+        toast.error(error.response.data.message);
+
+    }
+}
+
+
+
+
   const driverData = async (e) => {
     try {
 
@@ -49,6 +91,18 @@ function DriverList() {
           <thead className='text-xs text-gray-700 uppercase bg-primary dark:text-gray-400 '><tr className=''><th className='px-6 py-3'>name</th><th className='px-6 py-3'>Dno</th><th className='px-6 py-3'>mobile</th><th className='px-6 py-3'>Busno</th></tr></thead>
           <tbody>
             {driverList ? (driverList.map(item => (
+               <>
+               <div className={`${deleteItem ? '' : 'hidden'}
+                        flex justify-center items-center space-x-2 py-1`}>
+                  <input
+
+                      type="checkbox"
+                      className='w-5 h-5  text-red-600 bg-red-600 border-red-600 rounded focus:ring-red-500 focus:ring-2'
+                      checked={selectedItemIds.includes(item.userId)}
+                      onChange={(e) => handleCheckboxChange(item.userId)}
+                  />
+                  <h1>Delete</h1>
+              </div>
               <tr className='odd:bg-white even:bg-gray-50  hover:bg-gray-200' onClick={() => { navigate('/managedriver') }}><th scope="row" className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                 <img className="w-10 h-10 rounded-full" src="https://www.diethelmtravel.com/wp-content/uploads/2016/04/bill-gates-wealthiest-person.jpg" alt="Jese image" />
                 <div className="ps-3">
@@ -60,7 +114,7 @@ function DriverList() {
                     `${deleteItem ? '' : 'hidden'}  
                     w-5 h-5 text-red-600 bg-red-600 border-red-600 rounded focus:ring-red-500 focus:ring-2` 
                 } /></td></tr>
-            ))) : (
+            </>))) : (
               <tr>
                 <td>No data found</td>
               </tr>

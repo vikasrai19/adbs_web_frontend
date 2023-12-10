@@ -132,30 +132,30 @@ function Config() {
   }
   return (
     <div className=' h-screen  md:w-[75vw] lg:w-[85vw] overflow-y-scroll overflow-x-hidden'>
-      <div className='h-screen flex items-center justify-evenly md:w-[75vw] lg:w-[85vw] m-5'>
-        <form onSubmit={handleCreateAcademicYear} className='mt-1 w-[20vw] bg-white shadow-md h-[50%] flex flex-col items-center'>
-          <div className='w-full h-full flex flex-col items-center justify-evenly'>
+      <div className='py-8 flex items-center justify-evenly md:w-[75vw] lg:w-[85vw] m-5'>
+        <form onSubmit={handleCreateAcademicYear} className='mt-1 py-6 w-[20vw] bg-white shadow-md h-[50%] flex flex-col items-center'>
+          <div className='w-full h-full flex flex-col items-center justify-evenly  space-y-4'>
             <h1>Academic year</h1>
             <input type="text" name="academicYear" id="" className='w-[90%] h-10 border border-black/50 p-4 ' placeholder='Enter Academic Year' required />
-            <input type="number" name="orderNo" id="" className='w-[90%] h-10 border border-black/50 p-4' placeholder='Enter Order No' required/>
+            <input type="number" name="orderNo" id="" className='w-[90%] h-10 border border-black/50 p-4' placeholder='Enter Order No' required />
             <button type='submit' className='bg-tblue text-btnw hite w-[189px] h-[52px] rounded-[15px] text-btnwhite cursor-pointer'>
               create</button>
           </div>
         </form>
-        <form onSubmit={handleCreateDesignation} className='mt-1 w-[20vw] bg-white shadow-md h-[50%] flex flex-col items-center'>
-          <div className='w-full h-full flex flex-col items-center justify-evenly'>
+        <form onSubmit={handleCreateDesignation} className='mt-1 w-[20vw] py-6 bg-white shadow-md h-[50%] flex flex-col items-center'>
+          <div className='w-full h-full flex flex-col items-center justify-evenly space-y-4'>  
             <h1>Designation</h1>
-            <input type="text" name="designation" id="" className='w-[90%] h-10 border border-black/50 p-4' placeholder='Enter Designation' required/>
+            <input type="text" name="designation" id="" className='w-[90%] h-10 border border-black/50 p-4' placeholder='Enter Designation' required />
             <input type="number" name="orderNo" id="" className='w-[90%] h-10 border border-black/50 p-4' placeholder='Enter order no' required />
             <button type='submit' className='bg-tblue text-btnw hite w-[189px] h-[52px] rounded-[15px] text-btnwhite cursor-pointer'>
               create</button>
           </div>
         </form>
-        <form onSubmit={handleCreateBoarding} className='mt-1 w-[20vw] bg-white shadow-md h-[50%] flex flex-col items-center'>
-          <div className='w-full h-full flex flex-col items-center justify-evenly'>
+        <form onSubmit={handleCreateBoarding} className='mt-1 w-[20vw] py-6 bg-white shadow-md h-[50%] flex flex-col items-center'>
+          <div className='w-full h-full flex flex-col items-center justify-evenly space-y-4'>  
             <h1>Bus stop</h1>
             <input type="text" name="BoardingPointName" id="" className='w-[90%] h-10 border border-black/50 p-4' placeholder='Enter Boarding point name' required />
-            <input type="number" name="BoardingPointNo" id="" className='w-[90%] h-10 border border-black/50 p-4' placeholder='Enter boarding point no' required/>
+            <input type="number" name="BoardingPointNo" id="" className='w-[90%] h-10 border border-black/50 p-4' placeholder='Enter boarding point no' required />
             <button className='bg-tblue text-btnw hite w-[189px] h-[52px] rounded-[15px] text-btnwhite cursor-pointer'>
               create</button>
           </div>
@@ -165,8 +165,56 @@ function Config() {
 
 
       </div>
+      <div class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
+          <h2 class="text-2xl font-semibold mb-4">Bus Booking Form</h2>
+          <form>
+
+            <div class="mb-4">
+              <label for="boardingTime" class="block text-sm font-medium text-gray-600">Boarding Time</label>
+              <input type="text" id="boardingTime" name="boardingTime" class="mt-1 p-2 w-full border rounded-md" />
+            </div>
+
+
+            <div class="mb-4">
+              <label for="dropTime" class="block text-sm font-medium text-gray-600">Drop Time</label>
+              <input type="text" id="dropTime" name="dropTime" class="mt-1 p-2 w-full border rounded-md" />
+            </div>
+
+
+            <div class="mb-4">
+              <label for="userId" class="block text-sm font-medium text-gray-600">User ID</label>
+              <input type="text" id="userId" name="userId" class="mt-1 p-2 w-full border rounded-md" />
+            </div>
+
+
+            <div class="mb-4">
+              <label for="boardingPointId" class="block text-sm font-medium text-gray-600">Boarding Point ID</label>
+              <input type="text" id="boardingPointId" name="boardingPointId" class="mt-1 p-2 w-full border rounded-md" />
+            </div>
+
+            <div class="mb-4">
+              <label for="collegeBusId" class="block text-sm font-medium text-gray-600">College Bus ID</label>
+              <input type="text" id="collegeBusId" name="collegeBusId" class="mt-1 p-2 w-full border rounded-md" />
+            </div>
+
+            <div class="mb-4">
+              <label for="academicYearId" class="block text-sm font-medium text-gray-600">Academic Year ID</label>
+              <input type="text" id="academicYearId" name="academicYearId" class="mt-1 p-2 w-full border rounded-md" />
+            </div>
+             <div className='w-full flex items-center'>
+
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300 mx-auto">Submit</button>
+             </div>
+
+          </form>
+        </div>
+      {/* <div className='flex items-center justify-center'>
+         <form action="">
+          <input type="text" />
+         </form>
+      </div> */}
       <div className=' h-full w-full'>
-        <div className='w-full text-center'>
+        <div className='w-full text-center mt-12'>
           <h1>Academic year</h1>
           <table className='mx-auto w-[98%] text-sm text-left rtl:text-right text-black  mt-3 border border-black'>
             <thead className='text-xs text-btnwhite uppercase bg-tblue  '>
@@ -214,6 +262,7 @@ function Config() {
 
           </table>
         </div>
+       
         <div className='w-full text-center mt-5'>
           <h1>Bus stops</h1>
           <table className='mx-auto w-[98%] text-sm text-left rtl:text-right text-black  mt-3 border border-black'>
