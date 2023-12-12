@@ -1,29 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import axios from "axios"
+import axios from 'axios'
 // Importing toastify module
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function AddStudents() {
+function AddDriver() {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [boardingPoints, setBoardingPoints] = useState([])
-  const [academicYear, setAcademicYear] = useState([])
+  const [busNumber, setBusNumber] = useState(null)
+  const [designationdetails, setDesignationdetails] = useState(null)
 
-  const getBoardingPoints = async () => {
-    const { data } = await axios.get('http://localhost:3000/web/api/boardingpoints');
-    console.log('boarding pointa ', data)
-    setBoardingPoints(data)
-  }
-  const getAcademicyear = async () => {
-    const { data } = await axios.get('http://localhost:3000/web/api/academicyear');
-    console.log('year pointa ', data)
-    setAcademicYear(data)
-  }
-
-  useEffect(() => {
-    getBoardingPoints()
-    getAcademicyear()
-  }, [])
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -38,40 +23,64 @@ function AddStudents() {
       reader.readAsDataURL(file);
     }
   };
+
+
+
+
   const handleCameraClick = () => {
     // Trigger the file input click when the camera is clicked
     document.getElementById('imageInput').click();
   };
 
 
-  const handleADDStudent = async (e) => {
+  const getBUSNo = async () => {
+    const { data } = await axios.get('http://localhost:3000/web/api/colegebus');
+    console.log('boarding pointa ', data)
+    setBusNumber(data);
+
+  }
+  const getDesignation = async () => {
+    const { data } = await axios.get('http://localhost:3000/web/api/designation');
+    console.log('desgnation ', data)
+    setDesignationdetails(data);
+
+  }
+
+  useEffect(() => {
+    getBUSNo();
+    getDesignation();
+  }, []);
+
+
+  const handleAddDriver = async (e) => {
     e.preventDefault();
     try {
       const formdata = new FormData(e.target)
       const body = Object.fromEntries(formdata);
 
       const { data, status } = await axios.post(
-        `http://localhost:3000/web/api/addstudent`,
+        `http://localhost:3000/web/api/addbusemployee`,
         {
           ...body,
-          userImage: body.userImage['name'],
+          empimg: body.empimg['name'],
           userId: localStorage.getItem('userId')
         }
       )
-      toast.error("Added sucessfully!", {
+      toast.success("Added sucessfully!", {
         position: toast.POSITION.TOP_CENTER
       });
     } catch (error) {
-      console.log('error ', error)
-      toast.error(error?.response.data.message)
+      console.log(error)
+      toast.error(error.response.data.message);
+
     }
   }
 
   return (
     <div className=' h-screen flex items-center justify-evenly md:w-[75vw] lg:w-[85vw]'>
-      <form className='w-[50vw] bg-white shadow-md h-[80%]' onSubmit={handleADDStudent}>
+      <form className='w-[50vw] bg-white shadow-md h-[80%]' onSubmit={handleAddDriver}>
         <div className='w-full h-10 border border-b-1 flex justify-center items-center'>
-          Add student
+          Add Driver
         </div>
         <div className='w-28 h-28 mx-auto'>
 
@@ -99,7 +108,7 @@ function AddStudents() {
             accept="image/*"
             onChange={handleImageChange}
             id="imageInput"
-            name='userImage'
+            name='empimg'
             className="hidden"
             required
           />
@@ -107,10 +116,10 @@ function AddStudents() {
         <div className='flex flex-col items-center w-full py-5'>
 
           <div className='flex w-full' >
-            <div className='flex flex-col w-1/2 justify-center ml-4'>
+            {/* <div className='flex flex-col w-1/2 justify-center ml-4'>
               <label htmlFor="usn" className='text-black/60'>usn</label>
               <input type="text" name="usn" id="" className='w-[90%] h-10 border p-4' required />
-            </div>
+            </div> */}
             <div className='flex flex-col w-1/2'>
               <label htmlFor="name" className='text-black/60'>name</label>
               <input type="text" name="name" id="" className='w-[90%]  h-10 border p-4 ' required />
@@ -118,47 +127,65 @@ function AddStudents() {
           </div>
           <div className='flex w-full' >
             <div className='flex flex-col w-1/2 justify-center ml-4'>
-              <label htmlFor="email" className='text-black/60'>Email</label>
-              <input type="email" name="email" id="" className='w-[90%] h-10 border p-4' required />
+              <label htmlFor="startDate" className='text-black/60'>Joined date</label>
+              <input type="date" name="startDate" id="" className='w-[90%] h-10 border p-4' required />
             </div>
             <div className='flex flex-col w-1/2'>
-              <label htmlFor="mobileno" className='text-black/60'>mobileno</label>
-              <input type="number" name="mobileno" id="" className='w-[90%]  h-10 border p-4 ' required />
+              <label htmlFor="endDate" className='text-black/60'>end date</label>
+              <input type="date" name="endDate" id="" className='w-[90%]  h-10 border p-4 ' required />
             </div>
           </div>
           <div className='flex w-full' >
             <div className='flex flex-col w-1/2 justify-center ml-4'>
-              <label htmlFor="busNo " className='text-black/60'>busNo</label>
-              <input type="number" name="busNo" id="" className='w-[90%] h-10 border p-4' required />
+              <label htmlFor="currentStatus" className='text-black/60'>Status</label>
+              <select name='currentStatus' required className='w-[90%] h-10 border'>
+                {/* <option className='' value={''}> ----------- </option> */}
+                <option className='' value={'true'}> available </option>
+                <option className='' value={'false'} selected> not available </option>
+              </select>
             </div>
             <div className='flex flex-col w-1/2'>
-              <label htmlFor="password" className='text-black/60'>password</label>
-              <input type="password" name="password" id="" className='w-[90%]  h-10 border p-4 ' required />
+              <label htmlFor="phono" className='text-black/60'>mobileno</label>
+              <input type="number" name="phono" id="" className='w-[90%]  h-10 border p-4 ' required />
             </div>
           </div>
-          <div className='flex w-full'>
+          <div className='flex w-full' >
             <div className='flex flex-col w-1/2'>
-              <label htmlFor="boardingPointId" className='text-black/60'>boarding point</label>
-              <select name='boardingPointId' className='w-[90%] h-10 border'>
+              <label htmlFor="collegeBusId" className='text-black/60'>bus No</label>
+              <select name='collegeBusId' className='w-[90%] h-10 border'>
                 <option className='' value={''}> ----------- </option>
-                {boardingPoints?.map((ele, index) => {
+                {busNumber?.map((ele, index) => {
                   return (
                     < >
-                      <option className='text-xl text-black' value={ele?.BoardingPoiintId}> {ele?.BoardingPointName}</option>
+                      <option className='text-xl text-black' value={ele.collegeBusId}> {ele.busNo}</option>
                     </>
                   )
                 })}
               </select>
 
             </div>
-            <div className='flex flex-col w-1/2'>
-              <label htmlFor="password" className='text-black/60'>boarding point</label>
-              <select name='academicYearId' className='w-[90%] h-10 border'>
-                <option value={''}> ------------- </option>
-                {academicYear?.map((ele, index) => {
+            {/* <div className='flex flex-col w-1/2'>
+              <label htmlFor="routeNo" className='text-black/60'>Route</label>
+              <select name='routeNo' className='w-[90%] h-10 border'>
+                <option className='' value={''}> ----------- </option>
+                {designationdetails?.map((ele, index) => {
                   return (
-                    <>
-                      <option value={ele?.academicyear_Id}> {ele?.academicyear}</option>
+                    < >
+                      <option className='text-xl text-black' value={ele.routeNo}> {ele.startingPoint} to {ele.endingPoint}</option>
+                    </>
+                  )
+                })}
+              </select>
+
+            </div> */}
+            <div className='flex flex-col w-1/2'>
+              <label htmlFor="designationId" className='text-black/60'>Designation</label>
+              <select name='designationId' className='w-[90%] h-10 border'>
+                <option className='' value={''}> ----------- </option>
+                {designationdetails?.map((ele, index) => {
+                  return (
+                    < >
+                      <option className='text-xl text-black' value={ele.designation_id}> {ele.designation}</option>
                     </>
                   )
                 })}
@@ -167,6 +194,7 @@ function AddStudents() {
             </div>
           </div>
           <button type='submit' className='bg-tblue w-[189px] h-[52px] rounded-[15px] text-btnwhite cursor-pointer mt-4'>Add</button>
+
         </div>
         <ToastContainer />
       </form>
@@ -174,4 +202,4 @@ function AddStudents() {
   )
 }
 
-export default AddStudents
+export default AddDriver

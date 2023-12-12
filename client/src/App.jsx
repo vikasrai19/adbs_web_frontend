@@ -14,6 +14,9 @@ import Header from './components/bars/Header'
 import ConfigPage from './pages/Configuration/ConfigPage'
 import AddBusPage from './pages/Buses/AddBusPage'
 import AddStudentsPage from './pages/Student/AddStudentsPage'
+import UpdateBusPage from './pages/Buses/UpdateBusPage'
+import AddDriverPage from './pages/Driver/AddDriverPage'
+import MailPage from './pages/mail/MailPage'
 
 
 
@@ -30,15 +33,18 @@ function App() {
         <Route path='/Splash' element={<Splash/>}/> 
         <Route path='/test' element={<Home/>}/> 
         <Route path='/driver' element={<Driver/>}/> 
+        <Route path='/adddriver' element={<AddDriverPage/>}/> 
         <Route path='/managedriver' element={<DriverProfile/>}/> 
         <Route path='/Student' element={<Students/>}/> 
         <Route path='/addStudents' element={<AddStudentsPage/>}/> 
         <Route path='/manageStudent' element={<StudentProfile/>}/> 
         <Route path='/Buses' element={<Bus/>}/> 
         <Route path='/addBus' element={<AddBusPage/>}/> 
+        <Route path='/updatebus' element={<UpdateBusPage/>}/> 
         <Route path='/test1' element={<Header/>}/> 
         <Route path='/test1' element={<Header/>}/> 
         <Route path='/Config' element={<ConfigPage/>}/> 
+        <Route path='/mail' element={<MailPage/>}/> 
   
 
       </Routes>

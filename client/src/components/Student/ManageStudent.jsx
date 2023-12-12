@@ -26,13 +26,20 @@ e.preventDefault();
 try {
     const formdata=new FormData(e.target)
     const body=Object.fromEntries(formdata);
+    const { data, status } = await axios.post(
+      `http://localhost:3000/web/api/updatestudent`,
+      {
+        ...body,
+        userId: localStorage.getItem('userId')
+      }
+    )
     
       console.log('success')
       toast.success("updated sucessfully!", {
         position: toast.POSITION.TOP_CENTER
       });
 } catch (error) {
-    
+    console.log(error);
 }
       }
 
