@@ -63,6 +63,7 @@ function AddBus() {
         }
     }
 
+
     useEffect(()=>{
         configuredData2()
         // getBUSNo();
@@ -95,7 +96,7 @@ function AddBus() {
                             <div className='flex flex-col'>
 
                                 <label htmlFor="busNo">Busnumber</label>
-                                <input type="number" name='busNo' className=' h-10 border border-black/50 p-4 rounded' required />
+                                <input type="text" name='busNo' className=' h-10 border border-black/50 p-4 rounded' required />
                             </div>
                             <div className='flex flex-col'>
 
@@ -126,7 +127,7 @@ function AddBus() {
               {boardingpointsList?.map((ele, index) => {
                 return (
                   < >
-                    <option key={index} className='text-xl text-black' value={ele?.BoardingPoiintId}> {ele?.BoardingPointName}</option>
+                    <option key={index} className='text-xl text-black' value={ele?.BoardingPointid}> {ele?.BoardingPointName}</option>
                   </>
                 )
               })}

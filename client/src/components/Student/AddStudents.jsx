@@ -67,6 +67,7 @@ function AddStudents() {
     }
   }
 
+
   return (
     <div className=' h-screen flex items-center justify-evenly md:w-[75vw] lg:w-[85vw]'>
       <form className='w-[50vw] bg-white shadow-md h-[80%]' onSubmit={handleADDStudent}>
@@ -144,11 +145,11 @@ function AddStudents() {
             <div className='flex flex-col w-1/2'>
               <label htmlFor="busBoardingPointId" className='text-black/60'>boarding point</label>
               <select name='busBoardingPointId' className='w-[90%] h-10 border'>
-                
+
                 {boardingPoints?.map((ele, index) => {
                   return (
                     < >
-                      <option className='text-xl text-black' value={ele?.busBoardingPointId}> {ele?.busBoardingPointId}</option>
+                      <option className='text-xl text-black' value={ele?.busBoardingPointId}> {ele?.BoardingPointName}</option>
                     </>
                   )
                 })}
@@ -162,7 +163,7 @@ function AddStudents() {
                 {academicYear?.map((ele, index) => {
                   return (
                     <>
-                      <option value={ele?.academicyear_Id}> {ele?.academicyear}</option>
+                      <option value={ele?.academicyear_id}> {ele?.academicyear}</option>
                     </>
                   )
                 })}
