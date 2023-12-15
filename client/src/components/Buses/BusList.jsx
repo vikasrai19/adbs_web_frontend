@@ -3,6 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+// Importing toastify module
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function BusList() {
     const [busList, setBusList] = useState()
@@ -34,10 +37,10 @@ function BusList() {
             const { data, status } = await axios.post(
                 `http://localhost:3000/web/api/deletebus`,
                 {
-                    ...body
+                    ...body,
+                    userId: localStorage.getItem('userId')
                 }
             )
-            console.log(...body + "hello");
             toast.success("Deleted sucessfully!", {
                 position: toast.POSITION.TOP_CENTER
             });
@@ -61,8 +64,10 @@ function BusList() {
         }
 
     }
+  
 
     useEffect(() => {
+      
         busData();
         // Call your function here
         // If you need to perform cleanup when the component unmounts, you can return a function from useEffect
@@ -147,6 +152,7 @@ function BusList() {
                     <button className='py-3 px-8 text-white bg-red-600 rounded-lg' onClick={handleDelete}>Delete</button>
                 </div>
             </div>) : ('')}
+            <ToastContainer/>
         </div>
     )
 }

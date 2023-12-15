@@ -15,7 +15,7 @@ function Header() {
             </div>
             <div className='flex gap-2'>
               <img src="/icons/emai-1.svg" alt="" onClick={()=>navigate('/mail')}/>
-              <img src="/icons/settings.svg" alt="" />
+              <img src="/icons/settings.svg" alt="" onClick={()=>navigate('/settings')} />
 
             </div>
           </div>

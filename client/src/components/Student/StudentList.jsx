@@ -41,6 +41,7 @@ function StudentList() {
                     userId:body
                 }
             )
+            
             console.log(...body + "hello");
             toast.success("Deleted sucessfully!", {
                 position: toast.POSITION.TOP_CENTER
@@ -101,7 +102,8 @@ function StudentList() {
                                         type="checkbox"
                                         className='w-5 h-5  text-red-600 bg-red-600 border-red-600 rounded focus:ring-red-500 focus:ring-2'
                                         checked={selectedItemIds.includes(item.userId)}
-                                        onChange={(e) => handleCheckboxChange(item.userId)}
+                                        onChange={(e) => handleCheckboxChange(item.userId)
+                                        }
                                     />
                                     <h1>Delete</h1>
                                 </div>

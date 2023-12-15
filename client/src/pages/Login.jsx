@@ -54,7 +54,7 @@ function Login() {
         <ToastContainer />
       </div>
       <div className='cursor-pointer' onClick={movetosignup}>
-        <p>Dont have an account <span className='text-tblue'>Signup</span></p>
+        {/* <p>Dont have an account <span className='text-tblue'>Signup</span></p> */}
       </div>
     </div>
 
