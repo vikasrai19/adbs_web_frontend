@@ -17,17 +17,17 @@ function DriverList() {
 
   const handleCheckboxChange = (itemId) => {
     if (deleteItem) {
-      // Toggle the selected item ID
-      setSelectedItemIds((prevSelectedIds) => {
-        if (prevSelectedIds.includes(itemId)) {
-          return prevSelectedIds.filter((id) => id !== itemId);
+        // Toggle the selected item ID
+        setSelectedItemIds((prevSelectedIds) => {
+            if (prevSelectedIds.includes(itemId)) {
+                return prevSelectedIds.filter((id) => id !== itemId);
 
-        } else {
-          return [...prevSelectedIds, itemId];
-        }
-      });
+            } else {
+                return [...prevSelectedIds, itemId];
+            }
+        });
     }
-  };
+};
   console.log(selectedItemIds)
 
   const handleDelete = async (e) => {
@@ -92,7 +92,7 @@ function DriverList() {
 
         <h1 className={`${deleteItem ? '' : 'hidden'} uppercase font-bold text-red-500`}>select item to delete</h1>
         <table className='w-[98%] text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mx-auto mt-3 '>
-          <thead className='text-xs text-gray-700 uppercase bg-primary dark:text-gray-400 '><tr className=''><th className='px-6 py-3'>name</th><th className='px-6 py-3'>Dno</th><th className='px-6 py-3'>mobile</th><th className='px-6 py-3'>Busno</th></tr></thead>
+          <thead className='text-xs text-gray-700 uppercase bg-primary dark:text-gray-400 '><tr className=''><th className='px-6 py-3'>name</th><th className='px-6 py-3'>mobile</th></tr></thead>
           <tbody>
             {driverList ? (driverList.map(item => (
               <>
@@ -114,7 +114,7 @@ function DriverList() {
                     <div className
                       ="font-normal text-gray-500">{item.email}</div>
                   </div>
-                </th><td className='px-6 py-4'>{item.collegeBusEmpId}</td><td className='px-6 py-4'>{item.phono}</td><td className='px-6 py-4'>{item.busNo}</td></tr>
+                </th><td className='px-6 py-4'>{item.collegeBusEmpId}</td><td className='px-6 py-4'>{item.mobileno}</td></tr>
               </>))) : (
               <tr>
                 <td>No data found</td>

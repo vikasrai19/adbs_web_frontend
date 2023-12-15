@@ -86,6 +86,7 @@ function Config() {
           userId: localStorage.getItem('userId')
         }
       )
+      configuredData()
       toast.success(data.message)
     } catch (error) {
       // show error message
@@ -107,6 +108,7 @@ function Config() {
           userId: localStorage.getItem('userId')
         }
       )
+      configuredData1()
       toast.success("Added sucessfully!", {
         position: toast.POSITION.TOP_CENTER
       });
@@ -130,10 +132,9 @@ function Config() {
           userId: localStorage.getItem('userId')
         }
       )
+      configuredData2()
       console.log('success')
-      toast.success("Added sucessfully!", {
-        position: toast.POSITION.TOP_CENTER
-      });
+      toast.success("Added sucessfully!");
 
     } catch (error) {
       console.log('error ', error)
@@ -199,18 +200,18 @@ function Config() {
 
       </div>
       <div className="max-w-md mx-auto bg-white p-6 rounded-md shadow-md text-center">
-        <h2 className="text-2xl font-semibold mb-4">BUS timings</h2>
+        <h2 className="text-2xl font-semibold mb-4">BUS boarding points</h2>
         <form onSubmit={addbusboardingpoints} >
 
           <div className="mb-4">
             <label htmlFor="boardingTime" className="block text-sm font-medium text-gray-600">Boarding Time</label>
-            <input type="text" id="boardingTime" name="boardingTime" className="mt-1 p-2 w-full border rounded-md" required />
+            <input type="text" id="boardingTime" name="boardingTime" className="mt-1 p-2 w-full border rounded-md" placeholder='HH:MM:SS' required />
           </div>
 
 
           <div className="mb-4">
             <label htmlFor="dropTime" className="block text-sm font-medium text-gray-600">Drop Time</label>
-            <input type="text" id="dropTime" name="dropTime" className="mt-1 p-2 w-full border rounded-md" />
+            <input type="text" id="dropTime" name="dropTime" className="mt-1 p-2 w-full border rounded-md"  placeholder='HH:MM:SS'  required/>
           </div>
 
           <div className="mb-4">

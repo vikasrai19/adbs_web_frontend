@@ -8,6 +8,7 @@ function Sidebar() {
   const [current,setCurrent]=useState(''); 
   const navigate=useNavigate()
   const username=localStorage.getItem('name')
+  const image=localStorage.getItem('userImage')
  
   return (
     <div className='min-h-screen flex relative bg-blue-50 text-white'>
@@ -23,14 +24,14 @@ function Sidebar() {
             <div className='flex justify-between items-center gap-4 px-5 py-6 border-y-2'>
               <div className='flex justify-center items-center gap-3'>
 
-                <div className='w-14 h-14 rounded-xl object-fill overflow-hidden outline outline-slate-50'> <img src="https://www.diethelmtravel.com/wp-content/uploads/2016/04/bill-gates-wealthiest-person.jpg" alt="icon" /></div>
+                <div className='w-14 h-14 rounded-xl object-fill overflow-hidden outline outline-slate-50'> <img src="https://visualpharm.com/assets/381/Admin-595b40b65ba036ed117d3b23.svg" alt="icon" /></div>
                 <div>
                   <h1 className=' text-2xl font-semibold'>{username}</h1>
                   <h1 className='text-md opacity-50 font-semibold'>student</h1>
                 </div>
 
               </div>
-              <img src="/icons/editprofile.png" alt="" />
+            
             </div>
 
             <div className='flex flex-col justify-center text-center place-items-start px-5 py-4 text-[1rem] gap-10 text-black'>
@@ -50,12 +51,12 @@ function Sidebar() {
             Buswatch
           </div>
           <div className='flex items-center gap-4'>
-          <img className="w-14 h-14 rounded-full outline" src="https://www.diethelmtravel.com/wp-content/uploads/2016/04/bill-gates-wealthiest-person.jpg" alt="Jese image"/>
+          <img className="w-14 h-14 rounded-full outline" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpRe6b_zVYSdWlzuY2KoPC87ihq0mwaXid0J0Smopk1kg7SVYxQWPQ724KhWSC11w7lUM&usqp=CAU" alt="Jese image"/>
             <div>
               <h1 className='text-black text-md lg:text-sm font-semibold'>{username}</h1>
               <h1 className='text-black text-md lg:text-xs opacity-50 font-semibold'>Admin</h1>
             </div>
-            <img src="/icons/editprofile.png" alt="" />
+            
           </div>
         </div>
         <div className='flex flex-col gap-3 text-sm'>
@@ -79,10 +80,10 @@ function Sidebar() {
           <FontAwesomeIcon icon={faBus} style={{color: "#000000",}}  />
             <h1>Buses</h1>
           </div>
-          <div className='flex items-center gap-5  hover:rounded-e-md hover:bg-blue-300 hover:border-l-8 hover:pl-5 hover:p-2 hover:w-full border-blue-800'  onClick={()=>setCurrent('payments')}>
+          {/* <div className='flex items-center gap-5  hover:rounded-e-md hover:bg-blue-300 hover:border-l-8 hover:pl-5 hover:p-2 hover:w-full border-blue-800'  onClick={()=>setCurrent('payments')}>
           <FontAwesomeIcon icon={faCommentsDollar} style={{color: "#000000",}} />
             <h1>payments</h1>
-          </div>
+          </div> */}
           <div className='flex items-center gap-5  hover:rounded-e-md hover:bg-blue-300 hover:border-l-8 border-blue-800 hover:pl-5 ' onClick={()=>setCurrent('contact')}>
           <FontAwesomeIcon icon={faPhone} style={{color: "#000000",}}/>
             <h1>contact</h1>
