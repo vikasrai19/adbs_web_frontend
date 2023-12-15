@@ -10,7 +10,7 @@ function AddStudents() {
   const [academicYear, setAcademicYear] = useState([])
 
   const getBoardingPoints = async () => {
-    const { data } = await axios.get('http://localhost:3000/web/api/boardingpoints');
+    const { data } = await axios.get('http://localhost:3000/web/api/busboardingpoints');
     console.log('boarding pointa ', data)
     setBoardingPoints(data)
   }
@@ -107,44 +107,48 @@ function AddStudents() {
         <div className='flex flex-col items-center w-full py-5'>
 
           <div className='flex w-full' >
-            <div className='flex flex-col w-1/2 justify-center ml-4'>
+            {/* <div className='flex flex-col w-1/2 justify-center ml-4'>
               <label htmlFor="usn" className='text-black/60'>usn</label>
               <input type="text" name="usn" id="" className='w-[90%] h-10 border p-4' required />
-            </div>
+            </div> */}
             <div className='flex flex-col w-1/2'>
               <label htmlFor="name" className='text-black/60'>name</label>
               <input type="text" name="name" id="" className='w-[90%]  h-10 border p-4 ' required />
             </div>
-          </div>
-          <div className='flex w-full' >
             <div className='flex flex-col w-1/2 justify-center ml-4'>
               <label htmlFor="email" className='text-black/60'>Email</label>
               <input type="email" name="email" id="" className='w-[90%] h-10 border p-4' required />
             </div>
+          </div>
+          <div className='flex w-full' >
+           
             <div className='flex flex-col w-1/2'>
               <label htmlFor="mobileno" className='text-black/60'>mobileno</label>
               <input type="number" name="mobileno" id="" className='w-[90%]  h-10 border p-4 ' required />
-            </div>
-          </div>
-          <div className='flex w-full' >
-            <div className='flex flex-col w-1/2 justify-center ml-4'>
-              <label htmlFor="busNo " className='text-black/60'>busNo</label>
-              <input type="number" name="busNo" id="" className='w-[90%] h-10 border p-4' required />
             </div>
             <div className='flex flex-col w-1/2'>
               <label htmlFor="password" className='text-black/60'>password</label>
               <input type="password" name="password" id="" className='w-[90%]  h-10 border p-4 ' required />
             </div>
           </div>
+          <div className='flex w-full' >
+            {/* <div className='flex flex-col w-1/2 justify-center ml-4'>
+              <label htmlFor="busNo " className='text-black/60'>busNo</label>
+              <input type="number" name="busNo" id="" className='w-[90%] h-10 border p-4' required />
+            </div> */}
+            <label htmlFor="seatNo" className='text-black/60'>seatNo</label>
+              <input type="number" name="seatNo" id="" className='w-[20%]  h-10 border p-4 m-4 ' required />
+            
+          </div>
           <div className='flex w-full'>
             <div className='flex flex-col w-1/2'>
-              <label htmlFor="boardingPointId" className='text-black/60'>boarding point</label>
-              <select name='boardingPointId' className='w-[90%] h-10 border'>
-                <option className='' value={''}> ----------- </option>
+              <label htmlFor="busBoardingPointId" className='text-black/60'>boarding point</label>
+              <select name='busBoardingPointId' className='w-[90%] h-10 border'>
+                
                 {boardingPoints?.map((ele, index) => {
                   return (
                     < >
-                      <option className='text-xl text-black' value={ele?.BoardingPoiintId}> {ele?.BoardingPointName}</option>
+                      <option className='text-xl text-black' value={ele?.busBoardingPointId}> {ele?.busBoardingPointId}</option>
                     </>
                   )
                 })}
@@ -152,9 +156,9 @@ function AddStudents() {
 
             </div>
             <div className='flex flex-col w-1/2'>
-              <label htmlFor="password" className='text-black/60'>boarding point</label>
+              <label htmlFor="password" className='text-black/60'>Academic year</label>
               <select name='academicYearId' className='w-[90%] h-10 border'>
-                <option value={''}> ------------- </option>
+             
                 {academicYear?.map((ele, index) => {
                   return (
                     <>

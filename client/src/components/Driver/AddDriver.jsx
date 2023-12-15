@@ -8,6 +8,7 @@ function AddDriver() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [busNumber, setBusNumber] = useState(null)
   const [designationdetails, setDesignationdetails] = useState(null)
+  const [usertype, setUserType] = useState(null)
 
 
   const handleImageChange = (e) => {
@@ -46,7 +47,16 @@ function AddDriver() {
 
   }
 
+
+  const getUsertype = async () => {
+    const { data } = await axios.get('http://localhost:3000/web/api/usertype');
+    console.log('userType ', data)
+    setUserType(data);
+
+  }
+
   useEffect(() => {
+    getUsertype()
     getBUSNo();
     getDesignation();
   }, []);
@@ -123,6 +133,28 @@ function AddDriver() {
             <div className='flex flex-col w-1/2'>
               <label htmlFor="name" className='text-black/60'>name</label>
               <input type="text" name="name" id="" className='w-[90%]  h-10 border p-4 ' required />
+            </div>
+            <div className='flex flex-col w-1/2'>
+              <label htmlFor="email" className='text-black/60'>email</label>
+              <input type="text" name="email" id="email" className='w-[90%]  h-10 border p-4 ' required />
+            </div>
+          </div>
+          <div className='flex w-full' >
+            <div className='flex flex-col w-1/2 justify-center ml-4'>
+              <label htmlFor="password" className='text-black/60'>Password</label>
+              <input type="password" name="password" id="" className='w-[90%] h-10 border p-4' required />
+            </div>
+            <div className='flex flex-col w-1/2'>
+              <label htmlFor="userTypeId" className='text-black/60'>User Type</label>
+              <select name='userTypeId' className='w-[90%] h-10 border'>
+                {usertype?.map((ele, index) => {
+                  return (
+                    < >
+                      <option className='text-xl text-black' value={ele.usertype_id}> {ele.usertype}</option>
+                    </>
+                  )
+                })}
+              </select>
             </div>
           </div>
           <div className='flex w-full' >

@@ -3,9 +3,29 @@ import axios from 'axios'
 // Importing toastify module
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useEffect } from 'react';
 
 function AddBus() {
-    const [selectedImage, setSelectedImage] = useState(null)
+    const [selectedImage, setSelectedImage] = useState(null)  
+    const [boardingpointsList, setBoardingpointsList] = useState() 
+    
+    const [boardingPoints, setBoardingPoints] = useState([])
+    
+
+    const configuredData2 = async (e) => {
+        try {
+    
+          const { data, status } = await axios.get(
+            `http://localhost:3000/web/api/boardingpoints`);
+    
+          setBoardingpointsList(data)
+          console.log(boardingpointsList)
+        } catch (error) {
+          console.log('error ', error)
+        }
+    
+      }
+
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         if (file) {
@@ -19,28 +39,38 @@ function AddBus() {
         }
     }
 
-const handleAddBus= async (e)=>{
-    e.preventDefault()
-    try {
-        const formData = new FormData(e.target);
-        const body = Object.fromEntries(formData);
-        const {data, status} = await axios.post(
-          `http://localhost:3000/web/api/addbus`,
-          {...body,
-            busImage: body.busImage['name'],
-          userId: localStorage.getItem('userId')
-          }
-        ) 
-        console.log('success')
-        toast.success("Added sucessfully!", {
-          position: toast.POSITION.TOP_CENTER
-        });
-    } catch (error) {
-        console.log('error ', error)  
-        console.log(error.response.data) 
-        toast.error(error.response.data.message)
+    const handleAddBus = async (e) => {
+        e.preventDefault()
+        try {
+            const formData = new FormData(e.target);
+            const body = Object.fromEntries(formData);
+            const { data, status } = await axios.post(
+                `http://localhost:3000/web/api/addbus`,
+                {
+                    ...body,
+                    busImage: body.busImage['name'],
+                    userId: localStorage.getItem('userId')
+                }
+            )
+            console.log('success')
+            toast.success("Added sucessfully!", {
+                position: toast.POSITION.TOP_CENTER
+            });
+        } catch (error) {
+            console.log('error ', error)
+            console.log(error.response.data)
+            toast.error(error.response.data.message)
+        }
     }
-}
+
+    useEffect(()=>{
+        configuredData2()
+        // getBUSNo();
+        return () => {
+            // Your cleanup logic here
+            console.log('useEffect');
+          };
+        },[])
     return (
         <div className=' md:w-[75vw] lg:w-[85vw] mt-20'>
             <div className='w-[98%] h-full bg-blue-300  mx-auto text-center'>Buses</div>
@@ -55,8 +85,8 @@ const handleAddBus= async (e)=>{
                             )
 
                             }
-                             <label htmlFor="busImage" className='font-bold border border-black'>select bus image</label>
-                            <input type="file" name='busImage' id="busImage" className='hidden' onChange={handleImageChange}  required />
+                            <label htmlFor="busImage" className='font-bold border border-black'>select bus image</label>
+                            <input type="file" name='busImage' id="busImage" className='hidden' onChange={handleImageChange} required />
                         </div>
                     </div>
                     <div className=' p-10'>
@@ -91,30 +121,36 @@ const handleAddBus= async (e)=>{
                             <div className='flex flex-col'>
 
                                 <label htmlFor="startingPoint">startingPoint</label>
-                                <input type="text" name='startingPoint' className=' h-10 border border-black/50 p-4 rounded' required />
+                                {/* <input type="text" name='startingPoint' className=' h-10 border border-black/50 p-4 rounded' required /> */}
+                                <select name='startingPoint' className='w-[100%] h-10 border' required>
+              {boardingpointsList?.map((ele, index) => {
+                return (
+                  < >
+                    <option key={index} className='text-xl text-black' value={ele?.BoardingPoiintId}> {ele?.BoardingPointName}</option>
+                  </>
+                )
+              })}
+            </select>
                             </div>
-                            <div className='flex flex-col'>
-
-                                <label htmlFor="endingPoint">endingPoint</label>
-                                <input type="text" name='endingPoint' className=' h-10 border border-black/50 p-4 rounded' required />
-                            </div>
-                        </div>
-                        <div className='w-full flex items-center justify-between gap-3'>
-
-                          
                             <div className='flex flex-col'>
 
                                 <label htmlFor="noOfSeats">noOfSeats</label>
                                 <input type="number" name='noOfSeats' className=' h-10 border border-black/50 p-4 rounded' required />
                             </div>
                         </div>
+
+{/* 
+                    extra div backup    <div className='w-full flex items-center justify-between gap-3'>
+                       </div>
+  */}
+ 
                         <div className='w-full flex justify-center'>
-                        <input type="submit" value="Add"  className='bg-tblue  w-[189px] h-[52px] rounded-[15px] text-btnwhite cursor-pointer my-2'/>
+                            <input type="submit" value="Add" className='bg-tblue  w-[189px] h-[52px] rounded-[15px] text-btnwhite cursor-pointer my-2' />
                         </div>
                     </div>
                 </div>
             </form>
-            <ToastContainer/>
+            <ToastContainer />
         </div>
     )
 }
