@@ -107,7 +107,7 @@ function StudentList() {
                                     />
                                     <h1>Delete</h1>
                                 </div>
-                                <tr  key={key} className='odd:bg-white even:bg-gray-50  hover:bg-gray-200' onClick={() => { navigate('/manageStudent') }}>
+                                <tr  key={key} className='odd:bg-white even:bg-gray-50  hover:bg-gray-200' onClick={() => { navigate('/manageStudent?student=${item.userId}') }}>
                                     {/* <Link className=''> */}
                                     <th scope="row" className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                                         <img className="w-10 h-10 rounded-full" src={item.userImage} alt="Jese image" />

@@ -94,7 +94,7 @@ function BusList() {
                     <div className='grid grid-cols-3 gap-4 place-items-center place-content-center mt-5'>
                         {busList ? (busList.map((item, key) => (
                             <div>
-                                <div key={key} className='w-[20vw] h-[20vw] bg-white flex flex-col justify-center items-center shadow-sm ' onClick={() => { navigate('/updateBus') }}>
+                                <div key={key} className='w-[20vw] h-[20vw] bg-white flex flex-col justify-center items-center shadow-sm ' onClick={() => { navigate(`/updateBus?bus=${item.collegebusid}`) }}>
 
                                     <div className='text-center'>
                                         <div className='mb-5 text-2xl font-semi-bold '>

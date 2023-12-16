@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useLocation } from 'react-router-dom';
 
 function ManageStudent() {
     const [selectedImage, setSelectedImage] = useState(null);
     const [boardingPoints, setBoardingPoints] = useState([])
     const [academicYear, setAcademicYear] = useState([])
+    const location = useLocation()
+    const params = new URLSearchParams(location.search)
+    const studentid = params.get('student')
+    const [studentList,setStudentslist]=useState([])
+    const [editableData, setEditableData] = useState(null);
     const getBoardingPoints = async () => {
       const { data } = await axios.get('http://localhost:3000/web/api/busboardingpoints');
       console.log('boarding pointa ', data)
@@ -15,8 +21,29 @@ function ManageStudent() {
       console.log('year pointa ', data)
       setAcademicYear(data)
     }
+
+    const studentData = async (e) => {
+      try {
+        const { data, status } = await axios.get(
+          `http://localhost:3000/web/api/studentdetails1?userId=${studentid}`);
+  
+          setStudentslist(data)
+        setEditableData(data[0]); 
+        console.log(data)
+      } catch (error) {
+        console.log('error ', error)
+      }
+  
+    }
+    const handleInputChange = (e, key) => {
+      setEditableData((prevData) => ({
+        ...prevData,
+        [key]: e.target.value,
+      }));
+    };
   
     useEffect(() => {
+      studentData()
       getBoardingPoints()
       getAcademicyear()
     }, [])
@@ -39,6 +66,8 @@ function ManageStudent() {
         document.getElementById('imageInput').click();
       };
 
+
+     
 
       const handleUpdateStudent= async (e)=>{
 e.preventDefault();
@@ -72,7 +101,8 @@ try {
                           edit profile
                 </div>
           
-
+                {studentList.map(
+            (item, key) => (
                 <form className='flex flex-col items-center w-full py-5' onSubmit={handleUpdateStudent}>
                 
                 <div className='w-28 h-28 mx-auto'>
@@ -115,7 +145,7 @@ try {
   </div> */}
   <div className='flex flex-col w-1/2'>
     <label htmlFor="name" className='text-black/60'>name</label>
-    <input type="text" name="name" id="" className='w-[90%]  h-10 border p-4 ' required />
+    <input type="text" name="name" id="" className='w-[90%]  h-10 border p-4 ' value={editableData.name} onChange={(e) => handleInputChange(e, 'name  ')} required />
   </div>
   <div className='flex flex-col w-1/2 justify-center ml-4'>
     <label htmlFor="email" className='text-black/60'>Email</label>
@@ -175,6 +205,7 @@ try {
 <button type='submit' className='bg-tblue w-[189px] h-[52px] rounded-[15px] text-btnwhite cursor-pointer mt-4'>Add</button>
 </div>
                 </form>
+            ))}
             </div>
         </div>
         
