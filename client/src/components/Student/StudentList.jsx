@@ -90,7 +90,7 @@ function StudentList() {
             <div className='relative overflow-x-auto shadow-md sm:rounded-lg overflow-y-scroll text-center'>
                 <h1 className={`${deleteItem ? '' : 'hidden'} uppercase font-bold text-red-500`}>select item to delete</h1>
                 <table className='w-[98%] text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mx-auto mt-3 '>
-                    <thead className='text-xs text-gray-700 uppercase bg-primary dark:text-gray-400 '><tr className=''><th className='px-6 py-3'>name</th><th className='px-6 py-3'>Usn</th><th className='px-6 py-3'>mobile</th><th className='px-6 py-3'>Busno</th></tr></thead>
+                    <thead className='text-xs text-gray-700 uppercase bg-primary dark:text-gray-400 '><tr className=''><th className='px-6 py-3'>name</th>{/*<th className='px-6 py-3'>Usn</th>*/}<th className='px-6 py-3'>mobile</th>{/*<th className='px-6 py-3'>Busno</th>*/}</tr></thead>
                     <tbody>
                         {
                             studentList ? (studentList.map((item,key)=> (
@@ -107,19 +107,19 @@ function StudentList() {
                                     />
                                     <h1>Delete</h1>
                                 </div>
-                                <tr  key={key} className='odd:bg-white even:bg-gray-50  hover:bg-gray-200' onClick={() => { navigate('/manageStudent?student=${item.userId}') }}>
+                                <tr  key={key} className='odd:bg-white even:bg-gray-50  hover:bg-gray-200' onClick={() => { navigate(`/manageStudent?student=${item.userId}`) }}>
                                     {/* <Link className=''> */}
                                     <th scope="row" className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                        <img className="w-10 h-10 rounded-full" src={item.userImage} alt="Jese image" />
+                                        <img className="w-10 h-10 rounded-full" src={`/images/${item.userImage}`} alt="Jese image" />
                                         <div className="ps-3">
                                             <div className="text-base font-semibold text-black">{item.name}</div>
                                             <div className="font-normal text-gray-500">{item.email}
                                             </div>
                                         </div>
                                     </th>
-                                    <td className='px-6 py-4'>{item.userId}</td>
+                                    {/* <td className='px-6 py-4'>{item.userId}</td> */}
                                     <td className='px-6 py-4'>{item.mobileno}</td>
-                                    <td className='px-6 py-4'>{item.busNo}</td>
+                                    {/* <td className='px-6 py-4'>{item.busNo}</td> */}
                                     
                                     {/* </Link> */}
                                 </tr>

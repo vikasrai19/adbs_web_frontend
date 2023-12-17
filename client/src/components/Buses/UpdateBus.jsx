@@ -1,6 +1,9 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+// Importing toastify module
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function UpdateBus() {
     const [selectedImage, setSelectedImage] = useState(null)
@@ -9,6 +12,14 @@ function UpdateBus() {
     const location = useLocation()
     const params = new URLSearchParams(location.search)
     const busid = params.get('bus')
+    const [editableData, setEditableData] = useState(null);
+
+    const handleInputChange = (e, key) => {
+        setEditableData((prevData) => ({
+          ...prevData,
+          [key]: e.target.value,
+        }));
+      };
 
 
     console.log('busid', busid);
@@ -48,6 +59,7 @@ function UpdateBus() {
                 `http://localhost:3000/web/api/buseview?collegeBusId=${busid}`);
 
             setBusDetails(data)
+            setEditableData(data[0]); 
             console.log('busdetails', data)
         } catch (error) {
             console.log('error ', error)
@@ -63,14 +75,38 @@ function UpdateBus() {
             console.log('Component will unmount. Cleanup logic goes here.');
         };
     }, [])
+    const handleUpdateBus=async(e)=>{
+        e.preventDefault();
+        try {
+          console.log('user',localStorage.getItem('userId'))
+          const formdata = new FormData(e.target)
+          const body = Object.fromEntries(formdata);
+          const { data, status } = await axios.post(
+            `http://localhost:3000/web/api/updateBus`,
+            {
+              ...body,
+              busImage: body.busImage['name'],
+              collegeBusId:busid,
+              userId: localStorage.getItem('userId')
+              
+            }
+          )
+          toast.success("updated sucessfully!", {
+            position: toast.POSITION.TOP_CENTER
+          });
+        } catch (error) {
+          console.log(error)
+          toast.error(error.response.data);
+        }
+       }
 
     return (
         <div className=' md:w-[75vw] lg:w-[85vw] mt-20'>
             <div className='w-[98%] h-full bg-blue-300  mx-auto text-center'>Buses</div>
+            <form className='h-[85vh] flex items-center justify-center gap-3' onSubmit={handleUpdateBus}>
             {busDetails.map((item, key) => (
 
-                <form key={key} className='h-[85vh] flex items-center justify-center gap-3' /*onSubmit={handleAddBus}*/>
-                    <div className='w-[45%] h-[80vh] bg-white'>
+                    <div  key={key} className='w-[45%] h-[80vh] bg-white'>
                         <div className=''>
                             <div className='w-[20rem] bg-white h-[16rem] mt-3 mx-auto flex flex-col justify-center items-center'>
                                 {selectedImage ? (
@@ -95,12 +131,12 @@ function UpdateBus() {
                                 <div className='flex flex-col'>
 
                                     <label htmlFor="busNo">Busnumber</label>
-                                    <input type="text" name='busNo' className=' h-10 border border-black/50 p-4 rounded' value={item.busNo} required />
+                                    <input type="text" name='busNo' className=' h-10 border border-black/50 p-4 rounded' value={editableData.busNo} onChange={(e) => handleInputChange(e, 'busNo')} required />
                                 </div>
                                 <div className='flex flex-col'>
 
                                     <label htmlFor="routeNo">routeNo</label>
-                                    <input type="number" name='routeNo' className=' h-10 border border-black/50 p-4 rounded' value={item.routeNo} required />
+                                    <input type="number" name='routeNo' className=' h-10 border border-black/50 p-4 rounded'  value={editableData.routeNo} onChange={(e) => handleInputChange(e, 'routeNo')}  required />
                                 </div>
                             </div>
                             <div className='w-full flex items-center justify-between gap-3'>
@@ -108,12 +144,12 @@ function UpdateBus() {
                                 <div className='flex flex-col'>
 
                                     <label htmlFor="regDate">regDate</label>
-                                    <input type="date" name='regDate' className=' h-10 border border-black/50 p-4 rounded' value={item.regDate} required />
+                                    <input type="date" name='regDate' className=' h-10 border border-black/50 p-4 rounded' value={editableData.regDate} onChange={(e) => handleInputChange(e, 'regDate')} required />
                                 </div>
                                 <div className='flex flex-col'>
 
                                     <label htmlFor="purchaseDate">purchaseDate</label>
-                                    <input type="date" name='purchaseDate' className=' h-10 border border-black/50 p-4 rounded' value={item.regDate} required />
+                                    <input type="date" name='purchaseDate' className=' h-10 border border-black/50 p-4 rounded' value={editableData.purchaseDate} onChange={(e) => handleInputChange(e, 'purchaseDate')} required />
                                 </div>
                             </div>
                             <div className='w-full flex items-center justify-between gap-3'>
@@ -122,10 +158,11 @@ function UpdateBus() {
 
                                     <label htmlFor="startingPoint">startingPoint</label>
                                     <select name='startingPoint' className='w-[100%] h-10 border' required>
-                                        {boardingpointsList?.map((ele, index) => {
+                                    <option className='text-xl text-black' value={editableData.startingPoint}> {editableData.BoardingPointName}</option>
+                                        {boardingpointsList?.map((ele,key) => {
                                             return (
                                                 < >
-                                                    <option key={index} className='text-xl text-black' value={ele?.BoardingPointid}> {ele?.BoardingPointName}</option>
+                                                    <option key={key} className='text-xl text-black' value={ele?.BoardingPointid}> {ele?.BoardingPointName}</option>
                                                 </>
                                             )
                                         })}
@@ -137,7 +174,7 @@ function UpdateBus() {
                                 <div className='flex flex-col'>
 
                                     <label htmlFor="noOfSeats">noOfSeats</label>
-                                    <input type="number" name='noOfSeats' className=' h-10 border border-black/50 p-4 rounded' value={item.noOfSeats} required />
+                                    <input type="number" name='noOfSeats' className=' h-10 border border-black/50 p-4 rounded' value={editableData.noOfSeats} onChange={(e) => handleInputChange(e, 'noOfSeats')} />
                                 </div>
                             </div>
                             <div className='w-full flex justify-center'>
@@ -145,9 +182,9 @@ function UpdateBus() {
                             </div>
                         </div>
                     </div>
-                </form>
             ))}
-            {/* <ToastContainer/> */}
+            </form>
+            <ToastContainer/>
         </div>
     )
 }

@@ -10,6 +10,7 @@ function ManageDriver() {
   const location = useLocation()
   const params = new URLSearchParams(location.search)
   const useriddetails = params.get('user')
+  const useriddetails2 = params.get('id')
   console.log('userid', useriddetails);
   const [selectedImage, setSelectedImage] = useState(null);
   const [designationdetails, setDesignationdetails] = useState(null)
@@ -70,14 +71,17 @@ function ManageDriver() {
  const handleUpdateDriver=async(e)=>{
   e.preventDefault();
   try {
+    console.log('image:',selectedImage)
     const formdata = new FormData(e.target)
     const body = Object.fromEntries(formdata);
     const { data, status } = await axios.post(
       `http://localhost:3000/web/api/updateemployee`,
       {
         ...body,
+        empimg: body.empimg['name'],
         collegeBusEmpId:useriddetails,
-        userId: localStorage.getItem('userId')
+        userId: useriddetails2
+        
       }
     )
     toast.success("updated sucessfully!", {
@@ -142,7 +146,10 @@ function ManageDriver() {
                   <label htmlFor="name" className='text-black/60'>name</label>
                   <input type="text" name="name" id="" className='w-[90%] h-10 border p-4' value={editableData.name} onChange={(e) => handleInputChange(e, 'name')} required />
                 </div>
-                
+                <div className='flex flex-col w-1/2'>
+                  <label htmlFor="mobileno" className='text-black/60'>mobileno</label>
+                  <input type="text" name="phono" id="" className='w-[90%]  h-10 border p-4 ' value={editableData.mobileno} onChange={(e) => handleInputChange(e, 'mobileno')} required />
+                </div>
               </div>
               <div className='flex w-full' >
                 <div className='flex flex-col w-1/2 justify-center ml-4'>
@@ -150,16 +157,13 @@ function ManageDriver() {
                   <input type="email" name="email" id="" className='w-[90%] h-10 border p-4' value={editableData.email} onChange={(e) => handleInputChange(e, 'email')} required />
                 </div>
                 <div className='flex flex-col w-1/2'>
-                  <label htmlFor="mobileno" className='text-black/60'>mobileno</label>
-                  <input type="text" name="phono" id="" className='w-[90%]  h-10 border p-4 ' value={editableData.mobileno} onChange={(e) => handleInputChange(e, 'mobileno')} required />
+                  <label htmlFor="password" className='text-black/60'>password</label>
+                  <input type="password" name="password" id="" className='w-[90%]  h-10 border p-4 ' value={editableData.password} onChange={(e) => handleInputChange(e, 'password')} required />
                 </div>
               </div>
               <div className='flex w-full' >
                
-                <div className='flex flex-col w-1/2'>
-                  <label htmlFor="password" className='text-black/60'>password</label>
-                  <input type="password" name="password" id="" className='w-[90%]  h-10 border p-4 ' value={editableData.password} onChange={(e) => handleInputChange(e, 'password')} required />
-                </div>
+               
                 <div className='flex flex-col w-1/2'>
               <label htmlFor="designationId" className='text-black/60'>Designation</label>
               <select name='designation_id' className='w-[90%] h-10 border'>
@@ -174,7 +178,7 @@ function ManageDriver() {
 
             </div>
               </div>
-              <button type='submit' className='bg-tblue w-[189px] h-[52px] rounded-[15px] text-btnwhite cursor-pointer mt-4'>Edit</button>
+              <button type='submit' className='bg-tblue w-[189px] h-[52px] rounded-[15px] text-btnwhite cursor-pointer mt-4'>Update</button>
 
             </div>
 

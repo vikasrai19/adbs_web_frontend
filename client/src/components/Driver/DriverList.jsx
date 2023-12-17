@@ -107,14 +107,14 @@ function DriverList() {
                   />
                   <h1>Delete</h1>
                 </div>
-                <tr className='odd:bg-white even:bg-gray-50  hover:bg-gray-200' onClick={() => { navigate(`/managedriver?user=${item.collegeBusEmpId}`) }}><th scope="row" className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                <tr className='odd:bg-white even:bg-gray-50  hover:bg-gray-200' onClick={() => { navigate(`/managedriver?user=${item.collegeBusEmpId}&id=${item.userId}`) }}><th scope="row" className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                   <img className="w-10 h-10 rounded-full" src="https://www.diethelmtravel.com/wp-content/uploads/2016/04/bill-gates-wealthiest-person.jpg" alt="Jese image" />
                   <div className="ps-3">
                     <div className="text-base font-semibold text-black">{item.name}</div>
                     <div className
                       ="font-normal text-gray-500">{item.email}</div>
                   </div>
-                </th><td className='px-6 py-4'>{item.collegeBusEmpId}</td><td className='px-6 py-4'>{item.mobileno}</td></tr>
+                </th><td className='px-6 py-4'>{item.mobileno}</td></tr>
               </>))) : (
               <tr>
                 <td>No data found</td>

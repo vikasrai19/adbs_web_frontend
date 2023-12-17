@@ -8,6 +8,7 @@ function Dashboard() {
   const[driverCount,setDrivercount]=useState();
   const[studentCount,setStudentCount]=useState();
   const[pointsCount,setPointsCount]=useState();
+  const[dashboardBusDetails,setDashboardBusDetails]=useState([]);
   useState(new Date());
 
 const busData=async (e)=>{
@@ -59,7 +60,23 @@ const pointsData=async (e)=>{
   }
 }
 
+
+const displayData=async ()=>{
+  
+    try {
+
+        const { data, status } = await axios.get(
+            `http://localhost:3000/web/api/dashboardBusData`);
+
+        setDashboardBusDetails(data)
+        console.log(boardingpointsList)
+    } catch (error) {
+        console.log('error ', error)
+    }
+  }
+
 useEffect(()=>{
+  displayData()
   busData();
   driverData();
   studentData();
@@ -101,9 +118,38 @@ useEffect(()=>{
           
         </div>
         <div>
-           <h1>My bus</h1>
+           
            <div>
+           <div className='w-[90vw] md:w-[80vw] h-full bg-white rounded-xl mx-auto flex flex-col justify-center p-4 text-center m-5'>
+           <table>
+            <thead>
+              <tr>
+                <td>Bus no</td>
+                <td>routeNo</td>
+                <td>BoardingPointName</td>
+                <td>boarding Time</td>
+                <td>noOfSeats</td>
+              </tr>
+            </thead>
+            <tbody>
+              {dashboardBusDetails?dashboardBusDetails.map((item,key)=>(
+                  <tr key={key}>
+                     <td>{item.busNo}</td>
+                     <td>{item.routeNo}</td>
+                     <td>{item.BoardingPointName}</td>
+                     <td>{item.boardingTime}</td>
+                     <td>{item.noOfSeats}</td>
+                  </tr>
+              )
 
+              ):(<tr>
+                <td>no data found</td>
+              </tr>)}
+             
+            </tbody>
+           </table>
+           
+          </div>
            </div>
         </div>
       </div>

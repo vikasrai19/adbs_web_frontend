@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useLocation } from 'react-router-dom';
+// Importing toastify module
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function ManageStudent() {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -24,12 +27,13 @@ function ManageStudent() {
 
     const studentData = async (e) => {
       try {
+       
         const { data, status } = await axios.get(
-          `http://localhost:3000/web/api/studentdetails1?userId=${studentid}`);
+          `http://localhost:3000/web/api/studentdetails?userId=${studentid}`);
   
           setStudentslist(data)
         setEditableData(data[0]); 
-        console.log(data)
+        console.log('studentdata',data)
       } catch (error) {
         console.log('error ', error)
       }
@@ -78,7 +82,9 @@ try {
       `http://localhost:3000/web/api/updatestudent`,
       {
         ...body,
-        userId: localStorage.getItem('userId')
+        userImage:body.userImage['name'],
+        usertype_id:"4317d1e47f6a45c39dacdad3b8c301f4",
+        userId: studentid
       }
     )
     
@@ -145,35 +151,35 @@ try {
   </div> */}
   <div className='flex flex-col w-1/2'>
     <label htmlFor="name" className='text-black/60'>name</label>
-    <input type="text" name="name" id="" className='w-[90%]  h-10 border p-4 ' value={editableData.name} onChange={(e) => handleInputChange(e, 'name  ')} required />
+    <input type="text" name="name" id="" className='w-[90%]  h-10 border p-4 ' value={editableData.name} onChange={(e) => handleInputChange(e, 'name')} required />
   </div>
   <div className='flex flex-col w-1/2 justify-center ml-4'>
     <label htmlFor="email" className='text-black/60'>Email</label>
-    <input type="email" name="email" id="" className='w-[90%] h-10 border p-4' required />
+    <input type="email" name="email" id="" className='w-[90%] h-10 border p-4' value={editableData.email} onChange={(e) => handleInputChange(e, 'email')} required />
   </div>
 </div>
 <div className='flex w-full' >
  
   <div className='flex flex-col w-1/2'>
     <label htmlFor="mobileno" className='text-black/60'>mobileno</label>
-    <input type="number" name="mobileno" id="" className='w-[90%]  h-10 border p-4 ' required />
+    <input type="text" name="mobileno" id="" className='w-[90%]  h-10 border p-4 ' value={editableData.mobileno} onChange={(e) => handleInputChange(e, 'mobileno')} required />
   </div>
   <div className='flex flex-col w-1/2'>
     <label htmlFor="password" className='text-black/60'>password</label>
-    <input type="password" name="password" id="" className='w-[90%]  h-10 border p-4 ' required />
+    <input type="password" name="password" id="" className='w-[90%]  h-10 border p-4 ' value={editableData.password} onChange={(e) => handleInputChange(e, 'password')} required />
   </div>
 </div>
-<div className='flex w-full' >
+{/* <div className='flex w-full' > */}
   {/* <div className='flex flex-col w-1/2 justify-center ml-4'>
     <label htmlFor="busNo " className='text-black/60'>busNo</label>
     <input type="number" name="busNo" id="" className='w-[90%] h-10 border p-4' required />
   </div> */}
-  <label htmlFor="seatNo" className='text-black/60'>seatNo</label>
-    <input type="number" name="seatNo" id="" className='w-[20%]  h-10 border p-4 m-4 ' required />
-  
-</div>
+  {/* <label htmlFor="seatNo" className='text-black/60'>seatNo</label>
+    <input type="text" name="seatNo" id="" className='w-[20%]  h-10 border p-4 m-4 ' required />
+   */}
+{/* </div> */}
 <div className='flex w-full'>
-  <div className='flex flex-col w-1/2'>
+  {/* <div className='flex flex-col w-1/2'>
     <label htmlFor="busBoardingPointId" className='text-black/60'>boarding point</label>
     <select name='busBoardingPointId' className='w-[90%] h-10 border'>
       
@@ -186,8 +192,8 @@ try {
       })}
     </select>
 
-  </div>
-  <div className='flex flex-col w-1/2'>
+  </div> */}
+  {/* <div className='flex flex-col w-1/2'>
     <label htmlFor="password" className='text-black/60'>Academic year</label>
     <select name='academicYearId' className='w-[90%] h-10 border'>
    
@@ -200,13 +206,14 @@ try {
       })}
     </select>
 
-  </div>
+  </div> */}
 </div>
-<button type='submit' className='bg-tblue w-[189px] h-[52px] rounded-[15px] text-btnwhite cursor-pointer mt-4'>Add</button>
+<button type='submit' className='bg-tblue w-[189px] h-[52px] rounded-[15px] text-btnwhite cursor-pointer mt-4'>Update</button>
 </div>
                 </form>
             ))}
             </div>
+            <ToastContainer/>
         </div>
         
     )
