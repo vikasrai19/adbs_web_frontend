@@ -89,7 +89,7 @@ function AddDriver() {
   return (
     <div className=' h-screen flex items-center justify-evenly md:w-[75vw] lg:w-[85vw]'>
       <form className='w-[50vw] bg-white shadow-md h-[80%]' onSubmit={handleAddDriver}>
-        <div className='w-full h-10 border border-b-1 flex justify-center items-center'>
+        <div className='w-full font-medium capitalize py-3 text-xl border-b-2 flex justify-center items-center'>
           Add Driver
         </div>
         <div className='w-28 h-28 mx-auto'>
@@ -130,11 +130,11 @@ function AddDriver() {
               <label htmlFor="usn" className='text-black/60'>usn</label>
               <input type="text" name="usn" id="" className='w-[90%] h-10 border p-4' required />
             </div> */}
-            <div className='flex flex-col w-1/2'>
+            <div className='flex flex-col w-1/2 justify-center ml-4'>
               <label htmlFor="name" className='text-black/60'>name</label>
               <input type="text" name="name" id="" className='w-[90%]  h-10 border p-4 ' required />
             </div>
-            <div className='flex flex-col w-1/2'>
+            <div className='flex flex-col w-1/2 justify-center ml-4'>
               <label htmlFor="email" className='text-black/60'>email</label>
               <input type="text" name="email" id="email" className='w-[90%]  h-10 border p-4 ' required />
             </div>
@@ -144,7 +144,7 @@ function AddDriver() {
               <label htmlFor="password" className='text-black/60'>Password</label>
               <input type="password" name="password" id="" className='w-[90%] h-10 border p-4' required />
             </div>
-            <div className='flex flex-col w-1/2'>
+            <div className='flex flex-col w-1/2 justify-center ml-4'>
               <label htmlFor="userTypeId" className='text-black/60'>User Type</label>
               <select name='userTypeId' className='w-[90%] h-10 border'>
                 {usertype?.map((ele, index) => {
@@ -176,13 +176,13 @@ function AddDriver() {
                 <option className='' value={'false'} selected> not available </option>
               </select>
             </div>
-            <div className='flex flex-col w-1/2'>
+            <div className='flex flex-col w-1/2 justify-center ml-4'>
               <label htmlFor="phono" className='text-black/60'>mobileno</label>
               <input type="number" name="phono" id="" className='w-[90%]  h-10 border p-4 ' required />
             </div>
           </div>
           <div className='flex w-full' >
-            <div className='flex flex-col w-1/2'>
+            <div className='flex flex-col w-1/2 justify-center ml-4'>
               <label htmlFor="collegeBusId" className='text-black/60'>bus No</label>
               <select name='collegeBusId' className='w-[90%] h-10 border'>
                 <option className='' value={''}> ----------- </option>

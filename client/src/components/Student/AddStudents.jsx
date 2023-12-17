@@ -71,11 +71,10 @@ function AddStudents() {
   return (
     <div className=' h-screen flex items-center justify-evenly md:w-[75vw] lg:w-[85vw]'>
       <form className='w-[50vw] bg-white shadow-md h-[80%]' onSubmit={handleADDStudent}>
-        <div className='w-full h-10 border border-b-1 flex justify-center items-center'>
+        <div className='w-full font-medium capitalize py-3 text-xl border-b-2 flex justify-center items-center'>
           Add student
         </div>
-        <div className='w-28 h-28 mx-auto'>
-
+        <div className=''>
           <label htmlFor="imageInput">
             <div className="w-28 h-28 bg-gray-300 rounded-full relative mx-auto mt-4">
               {selectedImage &&
@@ -105,44 +104,36 @@ function AddStudents() {
             required
           />
         </div>
-        <div className='flex flex-col items-center w-full py-5'>
-
+        <div className='flex items-center justify-center flex-col py-6 space-y-5'>
           <div className='flex w-full' >
             {/* <div className='flex flex-col w-1/2 justify-center ml-4'>
               <label htmlFor="usn" className='text-black/60'>usn</label>
               <input type="text" name="usn" id="" className='w-[90%] h-10 border p-4' required />
             </div> */}
-            <div className='flex flex-col w-1/2'>
+            <div className='flex flex-col w-1/2 items-center'>
               <label htmlFor="name" className='text-black/60'>name</label>
               <input type="text" name="name" id="" className='w-[90%]  h-10 border p-4 ' required />
             </div>
-            <div className='flex flex-col w-1/2 justify-center ml-4'>
+            <div className='flex flex-col w-1/2 items-center'>
               <label htmlFor="email" className='text-black/60'>Email</label>
               <input type="email" name="email" id="" className='w-[90%] h-10 border p-4' required />
             </div>
           </div>
+
           <div className='flex w-full' >
-           
-            <div className='flex flex-col w-1/2'>
+
+            <div className='flex flex-col w-1/2 items-center'>
               <label htmlFor="mobileno" className='text-black/60'>mobileno</label>
               <input type="number" name="mobileno" id="" className='w-[90%]  h-10 border p-4 ' required />
             </div>
-            <div className='flex flex-col w-1/2'>
+            <div className='flex flex-col w-1/2 items-center'>
               <label htmlFor="password" className='text-black/60'>password</label>
               <input type="password" name="password" id="" className='w-[90%]  h-10 border p-4 ' required />
             </div>
           </div>
+
           <div className='flex w-full' >
-            {/* <div className='flex flex-col w-1/2 justify-center ml-4'>
-              <label htmlFor="busNo " className='text-black/60'>busNo</label>
-              <input type="number" name="busNo" id="" className='w-[90%] h-10 border p-4' required />
-            </div> */}
-            <label htmlFor="seatNo" className='text-black/60'>seatNo</label>
-              <input type="number" name="seatNo" id="" className='w-[20%]  h-10 border p-4 m-4 ' required />
-            
-          </div>
-          <div className='flex w-full'>
-            <div className='flex flex-col w-1/2'>
+          <div className='flex flex-col w-1/2 items-center'>
               <label htmlFor="busBoardingPointId" className='text-black/60'>boarding point</label>
               <select name='busBoardingPointId' className='w-[90%] h-10 border'>
 
@@ -156,10 +147,10 @@ function AddStudents() {
               </select>
 
             </div>
-            <div className='flex flex-col w-1/2'>
+            <div className='flex flex-col w-1/2 items-center'>
               <label htmlFor="password" className='text-black/60'>Academic year</label>
               <select name='academicYearId' className='w-[90%] h-10 border'>
-             
+
                 {academicYear?.map((ele, index) => {
                   return (
                     <>
@@ -170,6 +161,23 @@ function AddStudents() {
               </select>
 
             </div>
+           
+           
+           
+           
+           
+          </div>
+
+          <div className='flex w-full'>
+             {/* <div className='flex flex-col w-1/2 justify-center ml-4'>
+              <label htmlFor="busNo " className='text-black/60'>busNo</label>
+              <input type="number" name="busNo" id="" className='w-[90%] h-10 border p-4' required />
+            </div> */}
+            <div className='flex flex-col w-full items-center'>
+             <label htmlFor="seatNo" className='text-black/60'>seatNo</label>
+            <input type="text" name="seatNo" id="" className='w-[50%]  h-10 border p-4 m-4 ' required />
+            </div>
+
           </div>
           <button type='submit' className='bg-tblue w-[189px] h-[52px] rounded-[15px] text-btnwhite cursor-pointer mt-4'>Add</button>
         </div>

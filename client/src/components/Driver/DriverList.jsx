@@ -17,17 +17,17 @@ function DriverList() {
 
   const handleCheckboxChange = (itemId) => {
     if (deleteItem) {
-        // Toggle the selected item ID
-        setSelectedItemIds((prevSelectedIds) => {
-            if (prevSelectedIds.includes(itemId)) {
-                return prevSelectedIds.filter((id) => id !== itemId);
+      // Toggle the selected item ID
+      setSelectedItemIds((prevSelectedIds) => {
+        if (prevSelectedIds.includes(itemId)) {
+          return prevSelectedIds.filter((id) => id !== itemId);
 
-            } else {
-                return [...prevSelectedIds, itemId];
-            }
-        });
+        } else {
+          return [...prevSelectedIds, itemId];
+        }
+      });
     }
-};
+  };
   console.log(selectedItemIds)
 
   const handleDelete = async (e) => {
@@ -78,9 +78,9 @@ function DriverList() {
 
   return (
     <div className=' h-screen md:w-[75vw] lg:w-[85vw] pt-20 overflow-y-scroll'>
-      <div className='w-[98%] bg-blue-300  mx-auto text-center '>Drivers</div>
+      <div className='w-[98%] bg-blue-300  mx-auto text-center py-4 font-semibold text-xl'>Drivers</div>
       <div className='w-full flex justify-between mt-10'>
-        <div className=' ml-4 bg-slate-200 px-6 py-2 my-2 rounded-md text-xs'><h1>total Drivers: <span className='text-[#8FC100] font-bold text-xl '>{(driverList) ? (driverList.length) : ('')}</span></h1></div>
+        <div className=' ml-4 bg-slate-200 px-6 py-2 my-2 rounded-md'><h1 className='font-medium text-sm'>Total Drivers: <span className='text-[#8FC100] font-bold text-xl '>{(driverList) ? (driverList.length) : ('')}</span></h1></div>
         <div>
 
           <button className=' mr-5 bg-green-400 px-6 py-2 my-2 rounded-md' onClick={() => { navigate('/adddriver') }}><FontAwesomeIcon icon={faPlus} /> Add</button>
@@ -96,25 +96,26 @@ function DriverList() {
           <tbody>
             {driverList ? (driverList.map(item => (
               <>
-                <div className={`${deleteItem ? '' : 'hidden'}
-                        flex justify-center items-center space-x-2 py-1`}>
-                  <input
-
-                    type="checkbox"
-                    className='w-5 h-5  text-red-600 bg-red-600 border-red-600 rounded focus:ring-red-500 focus:ring-2'
-                    checked={selectedItemIds.includes(item.collegeBusEmpId)}
-                    onChange={(e) => handleCheckboxChange(item.collegeBusEmpId)}
-                  />
-                  <h1>Delete</h1>
-                </div>
-                <tr className='odd:bg-white even:bg-gray-50  hover:bg-gray-200' onClick={() => { navigate(`/managedriver?user=${item.collegeBusEmpId}&id=${item.userId}`) }}><th scope="row" className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                  <img className="w-10 h-10 rounded-full" src="https://www.diethelmtravel.com/wp-content/uploads/2016/04/bill-gates-wealthiest-person.jpg" alt="Jese image" />
-                  <div className="ps-3">
-                    <div className="text-base font-semibold text-black">{item.name}</div>
-                    <div className
-                      ="font-normal text-gray-500">{item.email}</div>
-                  </div>
-                </th><td className='px-6 py-4'>{item.mobileno}</td></tr>
+                <tr className='odd:bg-white even:bg-gray-50  hover:bg-gray-200'>
+                  <td scope="row" className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                    <div className={`${deleteItem ? '' : 'hidden'}  flex justify-center items-center space-x-2 py-1 px-4`}>
+                      <input
+                        type="checkbox"
+                        className='w-5 h-5  text-red-600 bg-red-600 border-red-600 rounded focus:ring-red-500 focus:ring-2'
+                        checked={selectedItemIds.includes(item.collegeBusEmpId)}
+                        onChange={(e) => handleCheckboxChange(item.collegeBusEmpId)}
+                      />
+                    </div>
+                    <div className='flex w-full' onClick={() => { navigate(`/managedriver?user=${item.collegeBusEmpId}&id=${item.userId}`) }}>
+                      <img className="w-10 h-10 rounded-full" src="https://www.diethelmtravel.com/wp-content/uploads/2016/04/bill-gates-wealthiest-person.jpg" alt="Jese image" />
+                      <div className="ps-3">
+                        <div className="text-base font-semibold text-black">{item.name}</div>
+                        <div className
+                          ="font-normal text-gray-500">{item.email}</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td className='px-6 py-4'>{item.mobileno}</td></tr>
               </>))) : (
               <tr>
                 <td>No data found</td>

@@ -167,30 +167,30 @@ function Config() {
   return (
     <div className=' h-screen  md:w-[75vw] lg:w-[85vw] overflow-y-scroll overflow-x-hidden'>
       <div className='py-8 flex items-center justify-evenly md:w-[75vw] lg:w-[85vw] m-5'>
-        <form onSubmit={handleCreateAcademicYear} className='mt-1 py-6 w-[20vw] bg-white shadow-md h-[50%] flex flex-col items-center'>
+        <form onSubmit={handleCreateAcademicYear} className='mt-1 py-12 px-4 w-[20vw] bg-white shadow-md h-[50%] flex flex-col items-center rounded-xl'>
           <div className='w-full h-full flex flex-col items-center justify-evenly  space-y-4'>
-            <h1>Academic year</h1>
-            <input type="text" name="academicYear" id="" className='w-[90%] h-10 border border-black/50 p-4 ' placeholder='Enter Academic Year' required />
-            <input type="number" name="orderNo" id="" className='w-[90%] h-10 border border-black/50 p-4' placeholder='Enter Order No' required />
-            <button type='submit' className='bg-tblue text-btnw hite w-[189px] h-[52px] rounded-[15px] text-btnwhite cursor-pointer'>
+            <h1 className='font-semibold text-2xl'>Academic year</h1>
+            <input type="text" name="academicYear" id="" className='w-[90%] h-10 border border-black/50 p-4  rounded-lg' placeholder='Enter Academic Year' required />
+            <input type="number" name="orderNo" id="" className='w-[90%] h-10 border border-black/50 p-4 rounded-lg' placeholder='Enter Order No' required />
+            <button type='submit' className='bg-tblue text-btnw hite  py-2 font-medium px-10 rounded-[10px] text-lg capitalize text-btnwhite cursor-pointer'>
               create</button>
           </div>
         </form>
-        <form onSubmit={handleCreateDesignation} className='mt-1 w-[20vw] py-6 bg-white shadow-md h-[50%] flex flex-col items-center'>
+        <form onSubmit={handleCreateDesignation} className='mt-1 w-[20vw] py-12 px-4 bg-white shadow-md h-[50%] flex flex-col items-center rounded-xl'>
           <div className='w-full h-full flex flex-col items-center justify-evenly space-y-4'>
-            <h1>Designation</h1>
-            <input type="text" name="designation" id="" className='w-[90%] h-10 border border-black/50 p-4' placeholder='Enter Designation' required />
-            <input type="number" name="orderNo" id="" className='w-[90%] h-10 border border-black/50 p-4' placeholder='Enter order no' required />
-            <button type='submit' className='bg-tblue text-btnw hite w-[189px] h-[52px] rounded-[15px] text-btnwhite cursor-pointer'>
+            <h1 className='font-semibold text-2xl'>Designation</h1>
+            <input type="text" name="designation" id="" className='w-[90%] h-10 border border-black/50 p-4 rounded-lg' placeholder='Enter Designation' required />
+            <input type="number" name="orderNo" id="" className='w-[90%] h-10 border border-black/50 p-4 rounded-lg' placeholder='Enter order no' required />
+            <button type='submit' className='bg-tblue text-btnw hite  py-2 font-medium px-10 rounded-[10px] text-lg capitalize text-btnwhite cursor-pointer'>
               create</button>
           </div>
         </form>
-        <form onSubmit={handleCreateBoarding} className='mt-1 w-[20vw] py-6 bg-white shadow-md h-[50%] flex flex-col items-center'>
+        <form onSubmit={handleCreateBoarding} className='mt-1 w-[20vw] py-12 px-4 bg-white shadow-md h-[50%] flex flex-col items-center rounded-xl'>
           <div className='w-full h-full flex flex-col items-center justify-evenly space-y-4'>
-            <h1>Bus stop</h1>
-            <input type="text" name="BoardingPointName" id="" className='w-[90%] h-10 border border-black/50 p-4' placeholder='Enter Boarding point name' required />
-            <input type="number" name="BoardingPointNo" id="" className='w-[90%] h-10 border border-black/50 p-4' placeholder='Enter boarding point no' required />
-            <button className='bg-tblue text-btnw hite w-[189px] h-[52px] rounded-[15px] text-btnwhite cursor-pointer'>
+            <h1 className='font-semibold text-2xl'>Bus stop</h1>
+            <input type="text" name="BoardingPointName" id="" className='w-[90%] h-10 border border-black/50 p-4 rounded-lg' placeholder='Enter Boarding point name' required />
+            <input type="number" name="BoardingPointNo" id="" className='w-[90%] h-10 border border-black/50 p-4 rounded-lg' placeholder='Enter boarding point no' required />
+            <button className='bg-tblue text-btnw hite  py-2 font-medium px-10 rounded-[10px] text-lg capitalize text-btnwhite cursor-pointer'>
               create</button>
           </div>
         </form>

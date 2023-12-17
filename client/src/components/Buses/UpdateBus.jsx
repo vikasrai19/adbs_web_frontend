@@ -139,9 +139,9 @@ function UpdateBus() {
                                     <input type="number" name='routeNo' className=' h-10 border border-black/50 p-4 rounded'  value={editableData.routeNo} onChange={(e) => handleInputChange(e, 'routeNo')}  required />
                                 </div>
                             </div>
-                            <div className='w-full flex items-center justify-between gap-3'>
+                            <div className='w-full flex items-center justify-center  gap-7'>
 
-                                <div className='flex flex-col'>
+                                <div className='flex flex-col '>
 
                                     <label htmlFor="regDate">regDate</label>
                                     <input type="date" name='regDate' className=' h-10 border border-black/50 p-4 rounded' value={editableData.regDate} onChange={(e) => handleInputChange(e, 'regDate')} required />
@@ -152,7 +152,7 @@ function UpdateBus() {
                                     <input type="date" name='purchaseDate' className=' h-10 border border-black/50 p-4 rounded' value={editableData.purchaseDate} onChange={(e) => handleInputChange(e, 'purchaseDate')} required />
                                 </div>
                             </div>
-                            <div className='w-full flex items-center justify-between gap-3'>
+                            <div className='w-full flex items-center justify-cente gap-3'>
 
                                 <div className='flex flex-col'>
 
@@ -168,15 +168,13 @@ function UpdateBus() {
                                         })}
                                     </select>
                                 </div>
-                            </div>
-                            <div className='w-full flex items-center justify-between gap-3'>
+                                <div className='flex flex-col '>
 
-                                <div className='flex flex-col'>
-
-                                    <label htmlFor="noOfSeats">noOfSeats</label>
-                                    <input type="number" name='noOfSeats' className=' h-10 border border-black/50 p-4 rounded' value={editableData.noOfSeats} onChange={(e) => handleInputChange(e, 'noOfSeats')} />
-                                </div>
+<label htmlFor="noOfSeats">noOfSeats</label>
+<input type="number" name='noOfSeats' className=' h-10 border border-black/50 p-4 rounded' value={editableData.noOfSeats} onChange={(e) => handleInputChange(e, 'noOfSeats')} />
+</div>
                             </div>
+                           
                             <div className='w-full flex justify-center'>
                                 <input type="submit" value="Update" className='bg-tblue  w-[189px] h-[52px] rounded-[15px] text-btnwhite cursor-pointer my-2' />
                             </div>

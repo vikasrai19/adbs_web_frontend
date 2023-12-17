@@ -53,10 +53,21 @@ function BusList() {
 
 
 
+    // const busData = async () => {
+    //     try {
+    //         const { data, status } = await axios.get(
+    //             `http://localhost:3000/web/api/colegebus`);
+
+    //         setBusList(data);
+    //     } catch (error) {
+    //         console.log('error ', error)
+    //     }
+
+    // }
     const busData = async () => {
         try {
             const { data, status } = await axios.get(
-                `http://localhost:3000/web/api/colegebus`);
+                `http://localhost:3000/web/api/dashboardBusData`);
 
             setBusList(data);
         } catch (error) {
@@ -79,7 +90,7 @@ function BusList() {
 
     return (
         <div className='h-screen overflow-y-scroll relative'>
-            <div className='w-[98%] bg-blue-300  mx-auto text-center mt-20'>Buses</div>
+            <div className='w-[98%] bg-blue-300  mx-auto text-center mt-20 font-medium capitalize py-3 text-xl border-b-2 flex justify-center items-center'>Buses</div>
             <div className=' md:w-[75vw] lg:w-[85vw]'>
                 <div className='w-full flex justify-between mt-10'>
                     <div className=' ml-4 bg-slate-200 px-6 py-2 my-2 rounded-md text-xs'><h1>total buses: <span className='text-[#8FC100] font-bold text-xl '>{(busList) ? (busList.length) : ("")}</span></h1></div>
@@ -94,7 +105,7 @@ function BusList() {
                     <div className='grid grid-cols-3 gap-4 place-items-center place-content-center mt-5'>
                         {busList ? (busList.map((item, key) => (
                             <div>
-                                <div key={key} className='w-[20vw] h-[20vw] bg-white flex flex-col justify-center items-center shadow-sm ' onClick={() => { navigate(`/updateBus?bus=${item.collegebusid}`) }}>
+                                <div key={key} className='w-[20vw] h-[20vw] bg-white flex flex-col justify-center items-center shadow-sm ' onClick={() => { navigate(`/updateBus?bus=${item.collegeBusId}`) }}>
 
                                     <div className='text-center'>
                                         <div className='mb-5 text-2xl font-semi-bold '>
@@ -110,8 +121,7 @@ function BusList() {
                                         <img src={`/images/${item.busImage}`} alt="" className='h-32 w-full' />
                                     </div>
                                     <div className='text-center'>
-                                        <p>From: <span>{item.startingPoint}</span></p>
-                                        <p>to:<span>{item.endingPoint}</span></p>
+                                        <p>From: <span>{item.BoardingPointName}</span></p>
                                     </div>
                                 </div>
                                 <div className={`${deleteItem ? '' : 'hidden'}
