@@ -86,6 +86,8 @@ function AddDriver() {
     }
   }
 
+  console.log('bus no ', busNumber)
+
   return (
     <div className=' h-screen flex items-center justify-evenly md:w-[75vw] lg:w-[85vw]'>
       <form className='w-[50vw] bg-white shadow-md h-[80%]' onSubmit={handleAddDriver}>
@@ -172,8 +174,8 @@ function AddDriver() {
               <label htmlFor="currentStatus" className='text-black/60'>Status</label>
               <select name='currentStatus' required className='w-[90%] h-10 border'>
                 {/* <option className='' value={''}> ----------- </option> */}
-                <option className='' value={'true'}> available </option>
-                <option className='' value={'false'} selected> not available </option>
+                <option className='' value={1}> available </option>
+                <option className='' value={0} selected> not available </option>
               </select>
             </div>
             <div className='flex flex-col w-1/2 justify-center ml-4'>
@@ -189,7 +191,7 @@ function AddDriver() {
                 {busNumber?.map((ele, index) => {
                   return (
                     < >
-                      <option className='text-xl text-black' value={ele.collegeBusId}> {ele.busNo}</option>
+                      <option className='text-xl text-black' value={ele.collegebusid}> {ele.busNo}</option>
                     </>
                   )
                 })}
