@@ -58,7 +58,7 @@ function AddStudents() {
           userId: localStorage.getItem('userId')
         }
       )
-      toast.error("Added sucessfully!", {
+      toast.success("Added sucessfully!", {
         position: toast.POSITION.TOP_CENTER
       });
     } catch (error) {

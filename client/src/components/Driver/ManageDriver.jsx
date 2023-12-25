@@ -148,7 +148,7 @@ function ManageDriver() {
                   </div>
                   <div className='flex flex-col w-1/2'>
                     <label htmlFor="mobileno" className='text-black/60'>mobileno</label>
-                    <input type="text" name="phono" id="" className='w-[90%]  h-10 border p-4 ' value={editableData.mobileno} onChange={(e) => handleInputChange(e, 'mobileno')} required />
+                    <input type="text" name="mobileno" id="" className='w-[90%]  h-10 border p-4 ' value={editableData.mobileno} onChange={(e) => handleInputChange(e, 'mobileno')} required />
                   </div>
                 </div>
 

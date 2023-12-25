@@ -103,85 +103,63 @@ function UpdateBus() {
     return (
         <div className=' md:w-[75vw] lg:w-[85vw] mt-20'>
             <div className='w-[98%] h-full bg-blue-300  mx-auto text-center'>Buses</div>
-            <form className='h-[85vh] flex items-center justify-center gap-3' onSubmit={handleUpdateBus}>
-            {busDetails.map((item, key) => (
-
-                    <div  key={key} className='w-[45%] h-[80vh] bg-white'>
-                        <div className=''>
-                            <div className='w-[20rem] bg-white h-[16rem] mt-3 mx-auto flex flex-col justify-center items-center'>
-                                {selectedImage ? (
-                                    <div className='w-full h-full overflow-hidden '>
-                                        <img src={selectedImage} alt="" className='object-fill' />
-                                    </div>
-                                ) : (
-                                    <div className='w-full h-full overflow-hidden '>
-                                        <img src={`/images/${item.busImage}`} alt="" className='object-fill' />
-                                    </div>
-                                )
-
-
-                                }
-                                <label htmlFor="busImage" className='font-bold border border-black'>select bus image</label>
-                                <input type="file" name='busImage' id="busImage" className='hidden' onChange={handleImageChange} />
-                            </div>
-                        </div>
-                        <div className=' p-10'>
-                            <div className='w-full flex items-center justify-between gap-3'>
-                                {busDetails ? (<h1></h1>) : (<h1>no data</h1>)}
-                                <div className='flex flex-col'>
-
-                                    <label htmlFor="busNo">Busnumber</label>
-                                    <input type="text" name='busNo' className=' h-10 border border-black/50 p-4 rounded' value={editableData.busNo} onChange={(e) => handleInputChange(e, 'busNo')} required />
-                                </div>
-                                <div className='flex flex-col'>
-
-                                    <label htmlFor="routeNo">routeNo</label>
-                                    <input type="number" name='routeNo' className=' h-10 border border-black/50 p-4 rounded'  value={editableData.routeNo} onChange={(e) => handleInputChange(e, 'routeNo')}  required />
-                                </div>
-                            </div>
-                            <div className='w-full flex items-center justify-center  gap-7'>
-
-                                <div className='flex flex-col '>
-
-                                    <label htmlFor="regDate">regDate</label>
-                                    <input type="date" name='regDate' className=' h-10 border border-black/50 p-4 rounded' value={editableData.regDate} onChange={(e) => handleInputChange(e, 'regDate')} required />
-                                </div>
-                                <div className='flex flex-col'>
-
-                                    <label htmlFor="purchaseDate">purchaseDate</label>
-                                    <input type="date" name='purchaseDate' className=' h-10 border border-black/50 p-4 rounded' value={editableData.purchaseDate} onChange={(e) => handleInputChange(e, 'purchaseDate')} required />
-                                </div>
-                            </div>
-                            <div className='w-full flex items-center justify-cente gap-3'>
-
-                                <div className='flex flex-col'>
-
-                                    <label htmlFor="startingPoint">startingPoint</label>
-                                    <select name='startingPoint' className='w-[100%] h-10 border' required>
-                                    <option className='text-xl text-black' value={editableData.startingPoint}> {editableData.BoardingPointName}</option>
-                                        {boardingpointsList?.map((ele,key) => {
-                                            return (
-                                                < >
-                                                    <option key={key} className='text-xl text-black' value={ele?.BoardingPointid}> {ele?.BoardingPointName}</option>
-                                                </>
-                                            )
-                                        })}
-                                    </select>
-                                </div>
-                                <div className='flex flex-col '>
-
-<label htmlFor="noOfSeats">noOfSeats</label>
-<input type="number" name='noOfSeats' className=' h-10 border border-black/50 p-4 rounded' value={editableData.noOfSeats} onChange={(e) => handleInputChange(e, 'noOfSeats')} />
-</div>
-                            </div>
-                           
-                            <div className='w-full flex justify-center'>
-                                <input type="submit" value="Update" className='bg-tblue  w-[189px] h-[52px] rounded-[15px] text-btnwhite cursor-pointer my-2' />
-                            </div>
-                        </div>
-                    </div>
+            <form className='h-screen flex items-center justify-center gap-3 ' onSubmit={handleUpdateBus}>
+  {busDetails.map((item, key) => (
+    <div key={key} className='w-[45%] bg-white p-8'>
+      <div className='w-[20rem] bg-white mx-auto flex flex-col justify-center items-center'>
+        {selectedImage ? (
+          <div className='w-full h-48 overflow-hidden'>
+            <img src={selectedImage} alt="" className='object-cover w-full h-full' />
+          </div>
+        ) : (
+          <div className='w-full h-48 overflow-hidden'>
+            <img src={`/images/${item.busImage}`} alt="" className='object-cover w-full h-full' />
+          </div>
+        )}
+        <label htmlFor="busImage" className='font-bold border border-black mt-3 cursor-pointer'>Select Bus Image</label>
+        <input type="file" name='busImage' id="busImage" className='hidden' onChange={handleImageChange} />
+      </div>
+      <div className='mt-8'>
+        <div className='flex flex-col mb-4'>
+          <label htmlFor="busNo">Bus Number</label>
+          <input type="text" name='busNo' className='h-10 border border-black/50 p-4 rounded' value={editableData.busNo} onChange={(e) => handleInputChange(e, 'busNo')} required />
+        </div>
+        <div className='flex flex-col mb-4'>
+          <label htmlFor="routeNo">Route Number</label>
+          <input type="number" name='routeNo' className='h-10 border border-black/50 p-4 rounded' value={editableData.routeNo} onChange={(e) => handleInputChange(e, 'routeNo')} required />
+        </div>
+        <div className='flex justify-between mb-4'>
+          <div className='flex flex-col w-1/2 mr-4'>
+            <label htmlFor="regDate">Registration Date</label>
+            <input type="date" name='regDate' className='h-10 border border-black/50 p-4 rounded' value={editableData.regDate} onChange={(e) => handleInputChange(e, 'regDate')} required />
+          </div>
+          <div className='flex flex-col w-1/2'>
+            <label htmlFor="purchaseDate">Purchase Date</label>
+            <input type="date" name='purchaseDate' className='h-10 border border-black/50 p-4 rounded' value={editableData.purchaseDate} onChange={(e) => handleInputChange(e, 'purchaseDate')} required />
+          </div>
+        </div>
+        <div className='flex flex-col mb-4'>
+          <label htmlFor="startingPoint">Starting Point</label>
+          <select name='startingPoint' className='w-full h-10 border' required>
+            <option className='text-xl text-black' value={editableData.startingPoint}>{editableData.BoardingPointName}</option>
+            {boardingpointsList?.map((ele, key) => (
+              <option key={key} className='text-xl text-black' value={ele?.BoardingPointid}>{ele?.BoardingPointName}</option>
             ))}
-            </form>
+          </select>
+        </div>
+        <div className='flex flex-col'>
+          <label htmlFor="noOfSeats">Number of Seats</label>
+          <input type="number" name='noOfSeats' className='h-10 border border-black/50 p-4 rounded' value={editableData.noOfSeats} onChange={(e) => handleInputChange(e, 'noOfSeats')} />
+        </div>
+      </div>
+      <div className='mt-8 flex justify-center'>
+        <input type="submit" value="Update" className='bg-tblue w-[189px] h-[52px] rounded-[15px] text-btnwhite cursor-pointer' />
+      </div>
+    </div>
+  ))}
+</form>
+
+
             <ToastContainer/>
         </div>
     )

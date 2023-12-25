@@ -7,7 +7,7 @@ function UpdateBusPage() {
   return (
     <div className='flex bg-secondary h-screen'>
     <Sidebar/>
-    <div>
+    <div className='h-screen overflow-y-scroll'>
       <Header/>
       <UpdateBus/>
     </div>
